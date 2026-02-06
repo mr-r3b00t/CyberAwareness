@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Awareness Training</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0e17;
+            --bg-card: #111827;
+            --bg-card-hover: #1a2332;
+            --accent-primary: #00d4aa;
+            --accent-secondary: #6366f1;
+            --accent-warning: #f59e0b;
+            --accent-danger: #ef4444;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #1e293b;
+            --gradient-1: linear-gradient(135deg, #00d4aa 0%, #00a896 100%);
+            --gradient-2: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-glow: radial-gradient(ellipse at center, rgba(0, 212, 170, 0.15) 0%, transparent 70%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-glow {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: var(--gradient-glow);
+            animation: glowMove 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes glowMove {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(10%, 5%); }
+            50% { transform: translate(-5%, 10%); }
+            75% { transform: translate(-10%, -5%); }
+        }
+
+        /* Header & Progress */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text span {
+            color: var(--accent-primary);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-1);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .timer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+            background: rgba(0, 212, 170, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 170, 0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Welcome Screen */
+        .welcome-screen {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-secondary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .welcome-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        .course-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .info-card-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-card-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 20px rgba(0, 212, 170, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 212, 170, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-primary);
+        }
+
+        .btn-nav {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-number::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-primary), transparent);
+            max-width: 100px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Content Cards */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            border-color: rgba(0, 212, 170, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .content-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .content-card h3 .icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .content-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .content-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Highlight boxes */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box.warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .highlight-box.danger {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .highlight-box-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .highlight-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            font-family: 'Space Mono', monospace;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-icon {
+            width: 28px;
+            height: 28px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 2px solid var(--accent-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .checklist-content h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .checklist-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Threat Cards */
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .threat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .threat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+        }
+
+        .threat-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 212, 170, 0.3);
+        }
+
+        .threat-card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .threat-card h4 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .threat-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Password Strength Demo */
+        .password-demo {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .password-input-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: var(--bg-dark);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        .password-strength {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .strength-bar {
+            flex: 1;
+            height: 6px;
+            background: var(--border-color);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .strength-bar.active.weak { background: var(--accent-danger); }
+        .strength-bar.active.medium { background: var(--accent-warning); }
+        .strength-bar.active.strong { background: var(--accent-primary); }
+
+        .strength-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .crack-time {
+            background: rgba(0, 212, 170, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .crack-time-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .crack-time-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        /* MFA Visual */
+        .mfa-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .mfa-step {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .mfa-step-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .mfa-step:hover .mfa-step-icon {
+            border-color: var(--accent-primary);
+            transform: scale(1.05);
+        }
+
+        .mfa-step-label {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .mfa-step-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .mfa-arrow {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+        }
+
+        /* Data Flow Visual */
+        .data-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .data-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .data-category:hover {
+            border-color: var(--accent-secondary);
+        }
+
+        .data-category-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .data-category-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .data-category-examples {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Incident Reporting Flow */
+        .report-flow {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .report-step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .report-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .report-step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--bg-dark);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .report-step:not(:last-child) .report-step-number::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: calc(100% + 1.5rem);
+            background: var(--border-color);
+            z-index: 1;
+        }
+
+        .report-step-content {
+            flex: 1;
+            padding-top: 0.5rem;
+        }
+
+        .report-step-content h4 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .report-step-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Emergency Contact Card */
+        .emergency-card {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .emergency-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .emergency-card .contact-info {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.25rem;
+            color: var(--accent-primary);
+            margin: 1rem 0;
+        }
+
+        .emergency-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Quiz Section */
+        .quiz-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .quiz-question-number {
+            background: var(--gradient-1);
+            color: var(--bg-dark);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quiz-option {
+            background: var(--bg-dark);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--accent-primary);
+            background: rgba(0, 212, 170, 0.05);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--accent-secondary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--accent-primary);
+            background: rgba(0, 212, 170, 0.1);
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--accent-danger);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .quiz-option-marker {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option.selected .quiz-option-marker {
+            border-color: var(--accent-secondary);
+            background: var(--accent-secondary);
+            color: white;
+        }
+
+        .quiz-option.correct .quiz-option-marker {
+            border-color: var(--accent-primary);
+            background: var(--accent-primary);
+            color: var(--bg-dark);
+        }
+
+        .quiz-option.incorrect .quiz-option-marker {
+            border-color: var(--accent-danger);
+            background: var(--accent-danger);
+            color: white;
+        }
+
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .quiz-feedback.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .quiz-feedback.correct {
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            color: var(--accent-primary);
+        }
+
+        .quiz-feedback.incorrect {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--accent-danger);
+        }
+
+        /* Completion Screen */
+        .completion-screen {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .completion-icon {
+            width: 120px;
+            height: 120px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            margin: 0 auto 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
+            50% { box-shadow: 0 0 0 20px rgba(0, 212, 170, 0); }
+        }
+
+        .completion-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .completion-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .completion-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .completion-stat {
+            text-align: center;
+        }
+
+        .completion-stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            font-family: 'Space Mono', monospace;
+        }
+
+        .completion-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .certificate-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+            border: 2px solid var(--accent-primary);
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 500px;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 170, 0.1) 0%, transparent 50%);
+            animation: certificateGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes certificateGlow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(5%, 5%); }
+        }
+
+        .certificate-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .certificate-badge {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Questions Grid */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .question-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .question-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent-primary);
+        }
+
+        .question-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .progress-container {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .progress-bar {
+                flex: 1;
+            }
+
+            .main-content {
+                padding: 8rem 1rem 3rem;
+            }
+
+            .welcome-title {
+                font-size: 2rem;
+            }
+
+            .course-info {
+                gap: 1rem;
+            }
+
+            .mfa-visual {
+                flex-direction: column;
+            }
+
+            .mfa-arrow {
+                transform: rotate(90deg);
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🛡️</div>
+                <div class="logo-text">Security<span>Aware</span></div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="progress-text" id="progressText">0%</span>
+            </div>
+            <div class="timer">
+                <span>⏱️</span>
+                <span id="timerDisplay">25:00</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Section 0: Welcome -->
+        <section class="section active" id="section-0">
+            <div class="welcome-screen">
+                <div class="welcome-badge">
+                    <span>📚</span>
+                    <span>Required Training • 2025</span>
+                </div>
+                <h1 class="welcome-title">Cyber Security Awareness</h1>
+                <p class="welcome-subtitle">
+                    Learn how to protect yourself, your colleagues, and our organisation from cyber threats. 
+                    This training covers essential security practices everyone needs to know.
+                </p>
+                
+                <div class="course-info">
+                    <div class="info-card">
+                        <div class="info-card-icon">⏱️</div>
+                        <div class="info-card-value">25 min</div>
+                        <div class="info-card-label">Duration</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">📖</div>
+                        <div class="info-card-value">5</div>
+                        <div class="info-card-label">Modules</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">✓</div>
+                        <div class="info-card-value">Quiz</div>
+                        <div class="info-card-label">Assessment</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="nextSection()">
+                    <span>Start Training</span>
+                    <span>→</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 1: Why Security Matters -->
+        <section class="section" id="section-1">
+            <div class="section-header">
+                <div class="section-number">MODULE 01</div>
+                <h2 class="section-title">Why Security Matters</h2>
+                <p class="section-intro">
+                    Cyber security isn't just an IT problem—it's everyone's responsibility. 
+                    Understanding why we protect our organisation helps us all make better decisions.
+                </p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">£4.4M</div>
+                    <div class="stat-label">Average cost of a data breach in 2024</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">277</div>
+                    <div class="stat-label">Days to identify and contain a breach</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">82%</div>
+                    <div class="stat-label">Of breaches involve human element</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🏢</span> Protecting Our Organisation</h3>
+                <p>
+                    Our organisation holds sensitive information: customer data, financial records, intellectual property, 
+                    and employee details. A security breach doesn't just affect systems—it affects real people.
+                </p>
+                <p>
+                    When we protect our data, we protect our customers' trust, our colleagues' privacy, 
+                    and our organisation's ability to operate and grow.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">⚡</span> The Real Impact of Breaches</h3>
+                <p>
+                    Security incidents can result in financial losses, regulatory fines, reputational damage, 
+                    and operational disruption. But beyond the numbers, breaches affect people: customers whose 
+                    data is exposed, employees who face the aftermath, and partners who lose confidence in us.
+                </p>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-box-title">💡 Key Insight</div>
+                <p>
+                    You are the first line of defence. Technology can only do so much—your awareness and actions 
+                    are what truly protect our organisation every day.
+                </p>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary btn-nav" onclick="prevSection()">← Back</button>
+                <button class="btn btn-primary btn-nav" onclick="nextSection()">Continue →</button>
+            </div>
+        </section>
+
+        <!-- Section 2: Understanding Threats -->
+        <section class="section" id="section-2">
+            <div class="section-header">
+                <div class="section-number">MODULE 02</div>
+                <h2 class="section-title">Understanding The Threats</h2>
+                <p class="section-intro">
+                    Knowing what we're up against helps us recognise and respond to threats effectively. 
+                    Here are the most common threats facing organisations today.
+                </p>
+            </div>
+
+            <div class="threat-grid">
+                <div class="threat-card">
+                    <div class="threat-card-icon">🎣</div>
+                    <h4>Social Engineering</h4>
+                    <p>
+                        Attackers manipulate people into revealing information or taking actions. This includes 
+                        phishing emails, phone calls pretending to be IT support, or impersonating colleagues.
+                    </p>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-card-icon">🔓</div>
+                    <h4>Credential Theft</h4>
+                    <p>
+                        Stolen usernames and passwords are bought and sold online. If you reuse passwords, 
+                        one breach at an unrelated service can compromise your work accounts.
+                    </p>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-card-icon">💰</div>
+                    <h4>Ransomware</h4>
+                    <p>
+                        Malicious software that encrypts files and demands payment. Often delivered through 
+                        email attachments or compromised websites. Can halt entire operations.
+                    </p>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-card-icon">👤</div>
+                    <h4>Insider Threats</h4>
+                    <p>
+                        Not always malicious—sometimes it's accidental data exposure, misconfigured sharing, 
+                        or simply sending sensitive information to the wrong person.
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🎯</span> How Attackers Think</h3>
+                <p>
+                    Attackers look for the path of least resistance. They're not usually targeting you personally—they're 
+                    looking for anyone who might give them access. They exploit urgency, authority, and helpfulness.
+                </p>
+                <p>
+                    A message that says "Your CEO needs this urgently" or "Your account will be suspended" is designed 
+                    to make you act before you think. Recognising these pressure tactics is your best defence.
+                </p>
+            </div>
+
+            <div class="highlight-box warning">
+                <div class="highlight-box-title">⚠️ Remember</div>
+                <p>
+                    Legitimate requests rarely demand immediate action under threat. If something feels urgent 
+                    and unusual, take a moment to verify through a different channel.
+                </p>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary btn-nav" onclick="prevSection()">← Back</button>
+                <button class="btn btn-primary btn-nav" onclick="nextSection()">Continue →</button>
+            </div>
+        </section>
+
+        <!-- Section 3: Password Security & MFA -->
+        <section class="section" id="section-3">
+            <div class="section-header">
+                <div class="section-number">MODULE 03</div>
+                <h2 class="section-title">Password Security & MFA</h2>
+                <p class="section-intro">
+                    Your passwords are the keys to our organisation's digital doors. 
+                    Let's look at practical ways to keep them secure.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🔑</span> The Password Problem</h3>
+                <p>
+                    Here's the reality: we all have too many passwords to remember. The temptation to reuse passwords 
+                    is understandable, but it's one of the biggest security risks you face.
+                </p>
+                <p>
+                    When a service gets breached (and they do, regularly), attackers try those stolen credentials 
+                    everywhere. If you used the same password for a shopping site and your work email, 
+                    that shopping breach just became a work problem.
+                </p>
+            </div>
+
+            <div class="password-demo">
+                <h4 style="margin-bottom: 1rem;">Try It: Password Strength Checker</h4>
+                <div class="password-input-wrapper">
+                    <input type="text" class="password-input" id="passwordInput" placeholder="Type a test password..." oninput="checkPassword(this.value)">
+                </div>
+                <div class="password-strength">
+                    <div class="strength-bar" id="strength1"></div>
+                    <div class="strength-bar" id="strength2"></div>
+                    <div class="strength-bar" id="strength3"></div>
+                    <div class="strength-bar" id="strength4"></div>
+                </div>
+                <div class="strength-text" id="strengthText">Enter a password to see its strength</div>
+                <div class="crack-time">
+                    <div class="crack-time-label">Estimated time to crack:</div>
+                    <div class="crack-time-value" id="crackTime">—</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">💼</span> Practical Solutions</h3>
+                <ul class="checklist">
+                    <li>
+                        <span class="checklist-icon">1</span>
+                        <div class="checklist-content">
+                            <h4>Use a Password Manager</h4>
+                            <p>Let software remember your passwords for you. You only need to remember one strong master password. The manager generates unique, complex passwords for each account.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">2</span>
+                        <div class="checklist-content">
+                            <h4>Never Reuse Passwords</h4>
+                            <p>Every account should have its own unique password. With a password manager, this is effortless—you don't need to remember them.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">3</span>
+                        <div class="checklist-content">
+                            <h4>Use Passphrases</h4>
+                            <p>For passwords you must remember, use a phrase: "correct-horse-battery-staple" is far stronger and easier to remember than "P@ssw0rd123".</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">📱</span> Multi-Factor Authentication (MFA)</h3>
+                <p>
+                    MFA adds a second layer of protection. Even if someone steals your password, they still can't 
+                    access your account without your second factor—usually your phone.
+                </p>
+            </div>
+
+            <div class="mfa-visual">
+                <div class="mfa-step">
+                    <div class="mfa-step-icon">🔑</div>
+                    <div class="mfa-step-label">Something You Know</div>
+                    <div class="mfa-step-desc">Your password</div>
+                </div>
+                <div class="mfa-arrow">+</div>
+                <div class="mfa-step">
+                    <div class="mfa-step-icon">📱</div>
+                    <div class="mfa-step-label">Something You Have</div>
+                    <div class="mfa-step-desc">Your phone or security key</div>
+                </div>
+                <div class="mfa-arrow">=</div>
+                <div class="mfa-step">
+                    <div class="mfa-step-icon">✅</div>
+                    <div class="mfa-step-label">Strong Protection</div>
+                    <div class="mfa-step-desc">Account secured</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-box-title">💡 Pro Tip</div>
+                <p>
+                    Enable MFA on your personal accounts too—email, banking, social media. 
+                    If attackers compromise your personal email, they can often reset your work passwords.
+                </p>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary btn-nav" onclick="prevSection()">← Back</button>
+                <button class="btn btn-primary btn-nav" onclick="nextSection()">Continue →</button>
+            </div>
+        </section>
+
+        <!-- Section 4: Data Protection & Sharing -->
+        <section class="section" id="section-4">
+            <div class="section-header">
+                <div class="section-number">MODULE 04</div>
+                <h2 class="section-title">Data Protection & Sharing</h2>
+                <p class="section-intro">
+                    Being mindful about what data we share, with whom, and how, is essential to 
+                    protecting our organisation and the people who trust us with their information.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">📊</span> Types of Sensitive Data</h3>
+                <p>
+                    Not all data is equal. Understanding what requires extra protection helps you 
+                    make better decisions about handling and sharing.
+                </p>
+            </div>
+
+            <div class="data-categories">
+                <div class="data-category">
+                    <div class="data-category-icon">👤</div>
+                    <div class="data-category-title">Personal Data</div>
+                    <div class="data-category-examples">Names, addresses, contact details, IDs</div>
+                </div>
+                <div class="data-category">
+                    <div class="data-category-icon">💳</div>
+                    <div class="data-category-title">Financial Data</div>
+                    <div class="data-category-examples">Payment info, bank details, salaries</div>
+                </div>
+                <div class="data-category">
+                    <div class="data-category-icon">🏥</div>
+                    <div class="data-category-title">Health Data</div>
+                    <div class="data-category-examples">Medical records, health conditions</div>
+                </div>
+                <div class="data-category">
+                    <div class="data-category-icon">🔒</div>
+                    <div class="data-category-title">Confidential Business</div>
+                    <div class="data-category-examples">Trade secrets, strategies, contracts</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🤔</span> Before You Share, Ask Yourself</h3>
+                <ul class="checklist">
+                    <li>
+                        <span class="checklist-icon">?</span>
+                        <div class="checklist-content">
+                            <h4>Does this person need this information?</h4>
+                            <p>Share only what's necessary for the task at hand. More isn't always better.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">?</span>
+                        <div class="checklist-content">
+                            <h4>Am I using a secure channel?</h4>
+                            <p>Sensitive data shouldn't go via personal email or messaging apps. Use approved company tools.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">?</span>
+                        <div class="checklist-content">
+                            <h4>Have I verified who I'm sending to?</h4>
+                            <p>Double-check email addresses. Autocomplete can send to the wrong "John Smith".</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">?</span>
+                        <div class="checklist-content">
+                            <h4>What happens to this data afterwards?</h4>
+                            <p>Consider whether the recipient will store, share, or delete the information.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🌐</span> External Sharing Considerations</h3>
+                <p>
+                    When sharing with vendors, partners, or clients, remember they may have different 
+                    security standards. Consider whether data can be anonymised, summarised, or shared 
+                    in a more limited form that still meets the business need.
+                </p>
+                <p>
+                    If you're unsure whether sharing is appropriate, ask your manager or the IT team. 
+                    It's always better to check first than to deal with a breach later.
+                </p>
+            </div>
+
+            <div class="highlight-box warning">
+                <div class="highlight-box-title">⚠️ Common Mistakes</div>
+                <p>
+                    Forwarding emails without checking attachments, sharing links with "anyone with the link" access, 
+                    and discussing sensitive matters in public spaces or on calls others can overhear. 
+                    Be mindful of your environment.
+                </p>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary btn-nav" onclick="prevSection()">← Back</button>
+                <button class="btn btn-primary btn-nav" onclick="nextSection()">Continue →</button>
+            </div>
+        </section>
+
+        <!-- Section 5: Reporting Incidents -->
+        <section class="section" id="section-5">
+            <div class="section-header">
+                <div class="section-number">MODULE 05</div>
+                <h2 class="section-title">Reporting Security Incidents</h2>
+                <p class="section-intro">
+                    Fast reporting can be the difference between a minor incident and a major breach. 
+                    When in doubt, report it. The IT team would rather investigate a false alarm than 
+                    miss a real threat.
+                </p>
+            </div>
+
+            <div class="emergency-card">
+                <h3>🚨 Report Security Incidents Immediately</h3>
+                <p>Contact the IT Security Team:</p>
+                <div class="contact-info">
+                    📧 security@yourcompany.com<br>
+                    📞 Internal: ext. 4444 | External: +44 XXX XXX XXXX
+                </div>
+                <p>Available 24/7 for urgent security concerns</p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">📋</span> What Should You Report?</h3>
+                <p>
+                    Report anything that seems suspicious or wrong. You don't need to be certain—that's 
+                    the IT team's job to investigate. Here are examples:
+                </p>
+                <ul class="checklist">
+                    <li>
+                        <span class="checklist-icon">!</span>
+                        <div class="checklist-content">
+                            <h4>Suspicious Emails or Messages</h4>
+                            <p>Unexpected requests for information, urgent demands, strange links or attachments</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">!</span>
+                        <div class="checklist-content">
+                            <h4>Unusual System Behaviour</h4>
+                            <p>Programs you didn't open, unexpected pop-ups, slow or unresponsive systems</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">!</span>
+                        <div class="checklist-content">
+                            <h4>Lost or Stolen Devices</h4>
+                            <p>Laptops, phones, USB drives, access cards—report immediately even if you might find it</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">!</span>
+                        <div class="checklist-content">
+                            <h4>Accidental Disclosure</h4>
+                            <p>Sent data to the wrong person, shared something you shouldn't have, found exposed data</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">!</span>
+                        <div class="checklist-content">
+                            <h4>Suspicious Behaviour</h4>
+                            <p>Someone asking unusual questions, unfamiliar people in secure areas, tailgating</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">⏱️</span> How to Report</h3>
+                <div class="report-flow">
+                    <div class="report-step">
+                        <div class="report-step-number">1</div>
+                        <div class="report-step-content">
+                            <h4>Stop and Contain</h4>
+                            <p>If it's a suspicious email, don't click anything else. If it's a lost device, try to remember where you last had it. Don't try to "fix" things yourself.</p>
+                        </div>
+                    </div>
+                    <div class="report-step">
+                        <div class="report-step-number">2</div>
+                        <div class="report-step-content">
+                            <h4>Contact IT Security Immediately</h4>
+                            <p>Email security@yourcompany.com or call the security hotline. Include what happened, when, and any relevant details.</p>
+                        </div>
+                    </div>
+                    <div class="report-step">
+                        <div class="report-step-number">3</div>
+                        <div class="report-step-content">
+                            <h4>Preserve Evidence</h4>
+                            <p>Don't delete suspicious emails—forward them to security. Screenshot anything unusual. Keep devices powered on if possible.</p>
+                        </div>
+                    </div>
+                    <div class="report-step">
+                        <div class="report-step-number">4</div>
+                        <div class="report-step-content">
+                            <h4>Follow Up</h4>
+                            <p>The IT team may have questions. Stay available and provide any additional information they need to investigate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-box-title">💡 Remember</div>
+                <p>
+                    <strong>There's no penalty for reporting something that turns out to be fine.</strong> 
+                    The IT team appreciates your vigilance. It's far better to report ten false alarms 
+                    than to miss one real incident.
+                </p>
+            </div>
+
+            <div class="questions-grid">
+                <div class="question-card">
+                    <h4>Not sure if it's a threat?</h4>
+                    <p>Report it anyway. Let the experts decide. Your intuition that "something seems off" is valuable.</p>
+                </div>
+                <div class="question-card">
+                    <h4>Worried about looking foolish?</h4>
+                    <p>Security professionals respect people who report. Ignoring concerns is what causes breaches.</p>
+                </div>
+                <div class="question-card">
+                    <h4>Think it's too small to matter?</h4>
+                    <p>Small incidents can be early signs of larger attacks. Your report might complete a bigger picture.</p>
+                </div>
+                <div class="question-card">
+                    <h4>Made a mistake yourself?</h4>
+                    <p>Report it immediately. Honest reporting lets us respond faster. Mistakes happen—hiding them makes things worse.</p>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary btn-nav" onclick="prevSection()">← Back</button>
+                <button class="btn btn-primary btn-nav" onclick="nextSection()">Take Quiz →</button>
+            </div>
+        </section>
+
+        <!-- Section 6: Quiz -->
+        <section class="section" id="section-6">
+            <div class="section-header">
+                <div class="section-number">ASSESSMENT</div>
+                <h2 class="section-title">Knowledge Check</h2>
+                <p class="section-intro">
+                    Let's review what you've learned. Select the best answer for each question.
+                </p>
+            </div>
+
+            <div class="quiz-container" id="quiz1">
+                <div class="quiz-question">
+                    <span class="quiz-question-number">1</span>
+                    <span>Why should you never reuse passwords across different accounts?</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(1, this, 'a')">
+                        <span class="quiz-option-marker">A</span>
+                        <span>It's against company policy</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(1, this, 'b')">
+                        <span class="quiz-option-marker">B</span>
+                        <span>If one service is breached, attackers can access all your accounts using those credentials</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(1, this, 'c')">
+                        <span class="quiz-option-marker">C</span>
+                        <span>It makes passwords easier to guess</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="feedback1"></div>
+            </div>
+
+            <div class="quiz-container" id="quiz2">
+                <div class="quiz-question">
+                    <span class="quiz-question-number">2</span>
+                    <span>You receive an email asking you to urgently update your login details via a link. What should you do?</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(2, this, 'a')">
+                        <span class="quiz-option-marker">A</span>
+                        <span>Click the link quickly since it's urgent</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(2, this, 'b')">
+                        <span class="quiz-option-marker">B</span>
+                        <span>Delete the email and forget about it</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(2, this, 'c')">
+                        <span class="quiz-option-marker">C</span>
+                        <span>Don't click the link, report it to IT security, and verify through official channels</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="feedback2"></div>
+            </div>
+
+            <div class="quiz-container" id="quiz3">
+                <div class="quiz-question">
+                    <span class="quiz-question-number">3</span>
+                    <span>What does MFA (Multi-Factor Authentication) provide?</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(3, this, 'a')">
+                        <span class="quiz-option-marker">A</span>
+                        <span>A second layer of protection requiring something you have in addition to your password</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(3, this, 'b')">
+                        <span class="quiz-option-marker">B</span>
+                        <span>A more complex password requirement</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(3, this, 'c')">
+                        <span class="quiz-option-marker">C</span>
+                        <span>Automatic virus scanning for emails</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="feedback3"></div>
+            </div>
+
+            <div class="quiz-container" id="quiz4">
+                <div class="quiz-question">
+                    <span class="quiz-question-number">4</span>
+                    <span>When should you report a potential security incident?</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(4, this, 'a')">
+                        <span class="quiz-option-marker">A</span>
+                        <span>Only when you're 100% certain it's a real threat</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(4, this, 'b')">
+                        <span class="quiz-option-marker">B</span>
+                        <span>Immediately, even if you're not sure—let IT investigate</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(4, this, 'c')">
+                        <span class="quiz-option-marker">C</span>
+                        <span>After trying to fix the problem yourself first</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="feedback4"></div>
+            </div>
+
+            <div class="quiz-container" id="quiz5">
+                <div class="quiz-question">
+                    <span class="quiz-question-number">5</span>
+                    <span>Before sharing sensitive data, you should ask yourself:</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(5, this, 'a')">
+                        <span class="quiz-option-marker">A</span>
+                        <span>Is it after 5pm?</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(5, this, 'b')">
+                        <span class="quiz-option-marker">B</span>
+                        <span>Does this person need this data, and am I using a secure channel?</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(5, this, 'c')">
+                        <span class="quiz-option-marker">C</span>
+                        <span>Has my manager approved every single email I send?</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="feedback5"></div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary btn-nav" onclick="prevSection()">← Back</button>
+                <button class="btn btn-primary btn-nav" onclick="submitQuiz()" id="submitQuizBtn">Submit Quiz</button>
+            </div>
+        </section>
+
+        <!-- Section 7: Completion -->
+        <section class="section" id="section-7">
+            <div class="completion-screen">
+                <div class="completion-icon">🎉</div>
+                <h2 class="completion-title">Training Complete!</h2>
+                <p class="completion-subtitle">
+                    Congratulations on completing the Cyber Security Awareness Training.
+                </p>
+
+                <div class="completion-stats">
+                    <div class="completion-stat">
+                        <div class="completion-stat-value" id="finalScore">0/5</div>
+                        <div class="completion-stat-label">Quiz Score</div>
+                    </div>
+                    <div class="completion-stat">
+                        <div class="completion-stat-value" id="finalTime">25:00</div>
+                        <div class="completion-stat-label">Time Taken</div>
+                    </div>
+                    <div class="completion-stat">
+                        <div class="completion-stat-value">5/5</div>
+                        <div class="completion-stat-label">Modules Completed</div>
+                    </div>
+                </div>
+
+                <div class="certificate-card">
+                    <div class="certificate-content">
+                        <div class="certificate-badge">🛡️</div>
+                        <div class="certificate-title">Certificate of Completion</div>
+                        <p style="color: var(--text-secondary); margin: 0.5rem 0;">
+                            Cyber Security Awareness Training
+                        </p>
+                        <div class="certificate-date" id="completionDate"></div>
+                    </div>
+                </div>
+
+                <div class="content-card" style="text-align: left; margin-top: 2rem;">
+                    <h3><span class="icon">📌</span> Key Takeaways</h3>
+                    <ul class="checklist">
+                        <li>
+                            <span class="checklist-icon">✓</span>
+                            <div class="checklist-content">
+                                <h4>Use unique passwords with a password manager</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="checklist-icon">✓</span>
+                            <div class="checklist-content">
+                                <h4>Enable MFA on all accounts</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="checklist-icon">✓</span>
+                            <div class="checklist-content">
+                                <h4>Think before sharing sensitive data</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="checklist-icon">✓</span>
+                            <div class="checklist-content">
+                                <h4>Report incidents immediately—when in doubt, report</h4>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="checklist-icon">✓</span>
+                            <div class="checklist-content">
+                                <h4>Ask for help if you're unsure about anything</h4>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="emergency-card" style="margin-top: 2rem;">
+                    <h3>🔒 Security Contact</h3>
+                    <p>Remember: If you ever need help or want to report something:</p>
+                    <div class="contact-info">
+                        📧 security@yourcompany.com
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="restartCourse()" style="margin-top: 2rem;">
+                    <span>Retake Training</span>
+                    <span>↺</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Course state
+        let currentSection = 0;
+        const totalSections = 8;
+        let timerInterval;
+        let elapsedSeconds = 0;
+        let quizAnswers = {};
+        const correctAnswers = {
+            1: 'b',
+            2: 'c',
+            3: 'a',
+            4: 'b',
+            5: 'b'
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+        });
+
+        // Navigation
+        function nextSection() {
+            if (currentSection < totalSections - 1) {
+                document.getElementById(`section-${currentSection}`).classList.remove('active');
+                currentSection++;
+                document.getElementById(`section-${currentSection}`).classList.add('active');
+                updateProgress();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Start timer when leaving welcome screen
+                if (currentSection === 1 && !timerInterval) {
+                    startTimer();
+                }
+            }
+        }
+
+        function prevSection() {
+            if (currentSection > 0) {
+                document.getElementById(`section-${currentSection}`).classList.remove('active');
+                currentSection--;
+                document.getElementById(`section-${currentSection}`).classList.add('active');
+                updateProgress();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function updateProgress() {
+            const progress = currentSection === 0 ? 0 : Math.round((currentSection / (totalSections - 1)) * 100);
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            document.getElementById('progressText').textContent = `${progress}%`;
+        }
+
+        // Timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                elapsedSeconds++;
+                const minutes = Math.floor(elapsedSeconds / 60);
+                const seconds = elapsedSeconds % 60;
+                document.getElementById('timerDisplay').textContent = 
+                    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            return document.getElementById('timerDisplay').textContent;
+        }
+
+        // Password strength checker
+        function checkPassword(password) {
+            const bars = [
+                document.getElementById('strength1'),
+                document.getElementById('strength2'),
+                document.getElementById('strength3'),
+                document.getElementById('strength4')
+            ];
+            const strengthText = document.getElementById('strengthText');
+            const crackTime = document.getElementById('crackTime');
+
+            // Reset
+            bars.forEach(bar => {
+                bar.classList.remove('active', 'weak', 'medium', 'strong');
+            });
+
+            if (!password) {
+                strengthText.textContent = 'Enter a password to see its strength';
+                crackTime.textContent = '—';
+                return;
+            }
+
+            let strength = 0;
+            let time = '';
+
+            // Length check
+            if (password.length >= 8) strength++;
+            if (password.length >= 12) strength++;
+            if (password.length >= 16) strength++;
+
+            // Complexity checks
+            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+            if (/\d/.test(password)) strength++;
+            if (/[^a-zA-Z0-9]/.test(password)) strength++;
+
+            // Normalize to 4 bars
+            const level = Math.min(4, Math.ceil(strength / 1.5));
+
+            let strengthClass = 'weak';
+            let strengthLabel = 'Weak';
+
+            if (level <= 1) {
+                strengthClass = 'weak';
+                strengthLabel = 'Very Weak';
+                time = 'Seconds';
+            } else if (level === 2) {
+                strengthClass = 'weak';
+                strengthLabel = 'Weak';
+                time = 'Minutes to Hours';
+            } else if (level === 3) {
+                strengthClass = 'medium';
+                strengthLabel = 'Good';
+                time = 'Months to Years';
+            } else {
+                strengthClass = 'strong';
+                strengthLabel = 'Strong';
+                time = 'Centuries+';
+            }
+
+            for (let i = 0; i < level; i++) {
+                bars[i].classList.add('active', strengthClass);
+            }
+
+            strengthText.textContent = `Strength: ${strengthLabel}`;
+            crackTime.textContent = time;
+        }
+
+        // Quiz functions
+        function selectOption(questionNum, element, answer) {
+            // Remove previous selection
+            const container = document.getElementById(`quiz${questionNum}`);
+            container.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Select this option
+            element.classList.add('selected');
+            quizAnswers[questionNum] = answer;
+        }
+
+        function submitQuiz() {
+            // Check if all questions answered
+            if (Object.keys(quizAnswers).length < 5) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+
+            let score = 0;
+
+            // Grade each question
+            for (let i = 1; i <= 5; i++) {
+                const container = document.getElementById(`quiz${i}`);
+                const feedback = document.getElementById(`feedback${i}`);
+                const options = container.querySelectorAll('.quiz-option');
+                
+                options.forEach(opt => {
+                    opt.style.pointerEvents = 'none';
+                    const optAnswer = opt.querySelector('.quiz-option-marker').textContent.toLowerCase();
+                    
+                    if (optAnswer === correctAnswers[i]) {
+                        opt.classList.add('correct');
+                    }
+                    if (opt.classList.contains('selected') && optAnswer !== correctAnswers[i]) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+
+                if (quizAnswers[i] === correctAnswers[i]) {
+                    score++;
+                    feedback.textContent = '✓ Correct!';
+                    feedback.className = 'quiz-feedback show correct';
+                } else {
+                    feedback.textContent = '✗ Incorrect. See the correct answer highlighted above.';
+                    feedback.className = 'quiz-feedback show incorrect';
+                }
+            }
+
+            // Update submit button
+            const submitBtn = document.getElementById('submitQuizBtn');
+            submitBtn.textContent = `Score: ${score}/5 — Continue →`;
+            submitBtn.onclick = () => {
+                // Set final score
+                document.getElementById('finalScore').textContent = `${score}/5`;
+                document.getElementById('finalTime').textContent = stopTimer();
+                document.getElementById('completionDate').textContent = new Date().toLocaleDateString('en-GB', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+                nextSection();
+            };
+        }
+
+        function restartCourse() {
+            // Reset state
+            currentSection = 0;
+            elapsedSeconds = 0;
+            quizAnswers = {};
+            
+            // Reset UI
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('section-0').classList.add('active');
+            document.getElementById('timerDisplay').textContent = '25:00';
+            
+            // Reset quiz
+            for (let i = 1; i <= 5; i++) {
+                const container = document.getElementById(`quiz${i}`);
+                const feedback = document.getElementById(`feedback${i}`);
+                const options = container.querySelectorAll('.quiz-option');
+                
+                options.forEach(opt => {
+                    opt.classList.remove('selected', 'correct', 'incorrect');
+                    opt.style.pointerEvents = 'auto';
+                });
+                
+                feedback.classList.remove('show');
+            }
+            
+            const submitBtn = document.getElementById('submitQuizBtn');
+            submitBtn.textContent = 'Submit Quiz';
+            submitBtn.onclick = submitQuiz;
+            
+            // Reset timer
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
