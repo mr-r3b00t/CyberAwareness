@@ -14,6 +14,7 @@
             --accent-secondary: #6366f1;
             --accent-warning: #f59e0b;
             --accent-danger: #ef4444;
+            --accent-info: #3b82f6;
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
@@ -258,6 +259,51 @@
             color: var(--text-muted);
         }
 
+        /* Module Overview */
+        .module-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .module-preview {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .module-preview-num {
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+            flex-shrink: 0;
+        }
+
+        .module-preview-content h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .module-preview-content p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
         /* Buttons */
         .btn {
             display: inline-flex;
@@ -401,6 +447,11 @@
             border-color: rgba(239, 68, 68, 0.3);
         }
 
+        .highlight-box.info {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
         .highlight-box-title {
             font-weight: 600;
             margin-bottom: 0.5rem;
@@ -542,6 +593,117 @@
             line-height: 1.6;
         }
 
+        /* Scenario Cards */
+        .scenario-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .scenario-badge {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--gradient-2);
+            color: white;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .scenario-content {
+            margin-top: 1rem;
+        }
+
+        .scenario-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .scenario-email {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .scenario-email-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .scenario-email-header div {
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .scenario-email-header span {
+            color: var(--text-primary);
+        }
+
+        .scenario-email-body {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .red-flag {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--accent-danger);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+
+        .scenario-analysis {
+            background: rgba(0, 212, 170, 0.05);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .scenario-analysis h5 {
+            color: var(--accent-primary);
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .scenario-analysis ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .scenario-analysis li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 0.35rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .scenario-analysis li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
         /* Password Strength Demo */
         .password-demo {
             background: var(--bg-card);
@@ -616,6 +778,45 @@
             color: var(--accent-primary);
         }
 
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            background: var(--bg-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .comparison-table td {
+            color: var(--text-secondary);
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(0, 212, 170, 0.05);
+        }
+
+        .table-good {
+            color: var(--accent-primary) !important;
+        }
+
+        .table-bad {
+            color: var(--accent-danger) !important;
+        }
+
         /* MFA Visual */
         .mfa-visual {
             display: flex;
@@ -666,6 +867,62 @@
             color: var(--accent-primary);
         }
 
+        /* MFA Types Grid */
+        .mfa-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .mfa-type-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .mfa-type-card:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .mfa-type-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mfa-type-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .mfa-type-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .mfa-type-rating {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+        }
+
+        .mfa-type-rating.good {
+            color: var(--accent-primary);
+        }
+
+        .mfa-type-rating.better {
+            color: var(--accent-secondary);
+        }
+
+        .mfa-type-rating.best {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
         /* Data Flow Visual */
         .data-categories {
             display: grid;
@@ -700,6 +957,55 @@
         .data-category-examples {
             font-size: 0.85rem;
             color: var(--text-muted);
+        }
+
+        /* Sharing Decision Tree */
+        .decision-tree {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .decision-question {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .decision-options {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .decision-option {
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .decision-option.yes {
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            color: var(--accent-primary);
+        }
+
+        .decision-option.no {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: var(--accent-danger);
+        }
+
+        .decision-option:hover {
+            transform: scale(1.05);
         }
 
         /* Incident Reporting Flow */
@@ -791,6 +1097,42 @@
 
         .emergency-card p {
             color: var(--text-secondary);
+        }
+
+        /* Incident Examples Grid */
+        .incident-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .incident-example {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .incident-example:hover {
+            border-color: var(--accent-danger);
+        }
+
+        .incident-example-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .incident-example h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .incident-example p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
         /* Quiz Section */
@@ -1026,6 +1368,32 @@
             font-family: 'Space Mono', monospace;
         }
 
+        /* Key Takeaways */
+        .takeaways-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .takeaway-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .takeaway-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .takeaway-text {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
         /* Navigation */
         .nav-buttons {
             display: flex;
@@ -1058,6 +1426,115 @@
         }
 
         .question-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Interactive Elements */
+        .interactive-demo {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .demo-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .tab:hover {
+            color: var(--text-primary);
+        }
+
+        .tab.active {
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--accent-primary);
+            border-bottom: 2px solid var(--accent-primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            transform: translateX(-5px);
+        }
+
+        .timeline-date {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-desc {
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
@@ -1105,6 +1582,10 @@
             .btn {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .decision-options {
+                flex-direction: column;
             }
         }
     </style>
@@ -1154,13 +1635,72 @@
                     </div>
                     <div class="info-card">
                         <div class="info-card-icon">📖</div>
-                        <div class="info-card-value">5</div>
+                        <div class="info-card-value">8</div>
                         <div class="info-card-label">Modules</div>
                     </div>
                     <div class="info-card">
                         <div class="info-card-icon">✓</div>
                         <div class="info-card-value">Quiz</div>
                         <div class="info-card-label">Assessment</div>
+                    </div>
+                </div>
+
+                <div class="module-overview">
+                    <div class="module-preview">
+                        <div class="module-preview-num">1</div>
+                        <div class="module-preview-content">
+                            <h4>Why Security Matters</h4>
+                            <p>Understanding our responsibility</p>
+                        </div>
+                    </div>
+                    <div class="module-preview">
+                        <div class="module-preview-num">2</div>
+                        <div class="module-preview-content">
+                            <h4>Understanding Threats</h4>
+                            <p>Know what we're facing</p>
+                        </div>
+                    </div>
+                    <div class="module-preview">
+                        <div class="module-preview-num">3</div>
+                        <div class="module-preview-content">
+                            <h4>Social Engineering</h4>
+                            <p>Recognising manipulation</p>
+                        </div>
+                    </div>
+                    <div class="module-preview">
+                        <div class="module-preview-num">4</div>
+                        <div class="module-preview-content">
+                            <h4>Password Security</h4>
+                            <p>Practical password habits</p>
+                        </div>
+                    </div>
+                    <div class="module-preview">
+                        <div class="module-preview-num">5</div>
+                        <div class="module-preview-content">
+                            <h4>Multi-Factor Authentication</h4>
+                            <p>Your second line of defence</p>
+                        </div>
+                    </div>
+                    <div class="module-preview">
+                        <div class="module-preview-num">6</div>
+                        <div class="module-preview-content">
+                            <h4>Data Protection</h4>
+                            <p>Handling information safely</p>
+                        </div>
+                    </div>
+                    <div class="module-preview">
+                        <div class="module-preview-num">7</div>
+                        <div class="module-preview-content">
+                            <h4>Reporting Incidents</h4>
+                            <p>When and how to report</p>
+                        </div>
+                    </div>
+                    <div class="module-preview">
+                        <div class="module-preview-num">8</div>
+                        <div class="module-preview-content">
+                            <h4>Getting Help</h4>
+                            <p>Support and resources</p>
+                        </div>
                     </div>
                 </div>
 
@@ -1178,7 +1718,7 @@
                 <h2 class="section-title">Why Security Matters</h2>
                 <p class="section-intro">
                     Cyber security isn't just an IT problem—it's everyone's responsibility. 
-                    Understanding why we protect our organisation helps us all make better decisions.
+                    Understanding why we protect our organisation helps us all make better decisions every day.
                 </p>
             </div>
 
@@ -1198,31 +1738,52 @@
             </div>
 
             <div class="content-card">
-                <h3><span class="icon">🏢</span> Protecting Our Organisation</h3>
+                <h3><span class="icon">🏢</span> What Are We Protecting?</h3>
                 <p>
-                    Our organisation holds sensitive information: customer data, financial records, intellectual property, 
-                    and employee details. A security breach doesn't just affect systems—it affects real people.
+                    Our organisation holds a wealth of sensitive information that we're trusted to protect. This includes customer data like names, contact details, and payment information. It includes employee information—your personal details, salary data, and HR records. It includes business intelligence such as strategies, contracts, financial projections, and intellectual property.
                 </p>
                 <p>
-                    When we protect our data, we protect our customers' trust, our colleagues' privacy, 
-                    and our organisation's ability to operate and grow.
+                    When we talk about "protecting the organisation," we're really talking about protecting people: our customers who trust us with their information, our colleagues whose livelihoods depend on our continued operation, and our partners who rely on our integrity.
                 </p>
             </div>
 
             <div class="content-card">
                 <h3><span class="icon">⚡</span> The Real Impact of Breaches</h3>
                 <p>
-                    Security incidents can result in financial losses, regulatory fines, reputational damage, 
-                    and operational disruption. But beyond the numbers, breaches affect people: customers whose 
-                    data is exposed, employees who face the aftermath, and partners who lose confidence in us.
+                    Security incidents ripple through organisations in ways that aren't always obvious. The immediate costs include incident response, legal fees, regulatory fines, and customer notification. But the longer-term impacts can be even more damaging.
+                </p>
+                <p>
+                    Customers lose trust and take their business elsewhere. Partners become hesitant to share information or collaborate. Employees face stress, overtime, and sometimes job losses during recovery. The organisation's reputation—built over years—can be damaged in days.
+                </p>
+                <p>
+                    Consider this: after a significant breach, companies typically see a 7.5% drop in stock price, and it takes an average of 46 days to recover. For some companies, a major breach has been the beginning of the end.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🎯</span> Why Attackers Target Organisations Like Ours</h3>
+                <p>
+                    Cybercriminals are running businesses—just illegal ones. They look for the best return on investment. Large organisations have valuable data and deep pockets. Small organisations often have weaker security. Medium organisations sometimes fall into a dangerous middle ground: valuable enough to target, but without enterprise-level security.
+                </p>
+                <p>
+                    Attackers don't need to specifically target us. Many attacks are automated, scanning the internet for vulnerabilities. If our defences are weaker than our neighbours', we become the easier target—like leaving your car unlocked in a car park.
                 </p>
             </div>
 
             <div class="highlight-box">
-                <div class="highlight-box-title">💡 Key Insight</div>
+                <div class="highlight-box-title">💡 The Human Firewall</div>
                 <p>
-                    You are the first line of defence. Technology can only do so much—your awareness and actions 
-                    are what truly protect our organisation every day.
+                    Technology defences are essential, but they can only do so much. You are the final line of defence—and often the most effective one. A suspicious email that you report, a strange request that you question, a process that you follow correctly: these human actions prevent more breaches than any single piece of software.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">📊</span> Security Is Everyone's Job</h3>
+                <p>
+                    You might think "I don't have access to anything important" or "I'm not a target." But attackers don't think that way. They're looking for any way in. An assistant's email account can be used to send convincing requests to the CEO. A junior developer's credentials can provide access to production systems. A facilities manager's access badge can open doors to server rooms.
+                </p>
+                <p>
+                    Every person in the organisation has access to something valuable—even if it's just the trust that other people place in them. That's why security is everyone's responsibility, regardless of role or seniority.
                 </p>
             </div>
 
@@ -1239,62 +1800,93 @@
                 <h2 class="section-title">Understanding The Threats</h2>
                 <p class="section-intro">
                     Knowing what we're up against helps us recognise and respond to threats effectively. 
-                    Here are the most common threats facing organisations today.
+                    Here are the most common threats facing organisations today—and how to think about them.
                 </p>
             </div>
 
             <div class="threat-grid">
                 <div class="threat-card">
                     <div class="threat-card-icon">🎣</div>
-                    <h4>Social Engineering</h4>
+                    <h4>Phishing & Social Engineering</h4>
                     <p>
-                        Attackers manipulate people into revealing information or taking actions. This includes 
-                        phishing emails, phone calls pretending to be IT support, or impersonating colleagues.
+                        Attackers manipulate people into revealing information or taking harmful actions. This is the #1 attack vector because it works—humans are often easier to exploit than technology.
                     </p>
                 </div>
                 <div class="threat-card">
                     <div class="threat-card-icon">🔓</div>
-                    <h4>Credential Theft</h4>
+                    <h4>Credential Theft & Stuffing</h4>
                     <p>
-                        Stolen usernames and passwords are bought and sold online. If you reuse passwords, 
-                        one breach at an unrelated service can compromise your work accounts.
+                        Stolen usernames and passwords from one breach are automatically tested against thousands of other sites. Password reuse turns one breach into many.
                     </p>
                 </div>
                 <div class="threat-card">
                     <div class="threat-card-icon">💰</div>
                     <h4>Ransomware</h4>
                     <p>
-                        Malicious software that encrypts files and demands payment. Often delivered through 
-                        email attachments or compromised websites. Can halt entire operations.
+                        Malicious software encrypts files and demands payment for the decryption key. Modern ransomware also steals data first, threatening to publish it if you don't pay.
                     </p>
                 </div>
                 <div class="threat-card">
                     <div class="threat-card-icon">👤</div>
                     <h4>Insider Threats</h4>
                     <p>
-                        Not always malicious—sometimes it's accidental data exposure, misconfigured sharing, 
-                        or simply sending sensitive information to the wrong person.
+                        Not always malicious—often it's accidental data exposure, misconfigured sharing settings, or simply sending sensitive information to the wrong recipient.
+                    </p>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-card-icon">🔗</div>
+                    <h4>Supply Chain Attacks</h4>
+                    <p>
+                        Attackers compromise a vendor or service provider to gain access to their customers. Your security is only as strong as your weakest partner.
+                    </p>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-card-icon">📱</div>
+                    <h4>Business Email Compromise</h4>
+                    <p>
+                        Attackers impersonate executives or vendors to trick employees into transferring money or revealing sensitive information. Often highly targeted and researched.
                     </p>
                 </div>
             </div>
 
             <div class="content-card">
-                <h3><span class="icon">🎯</span> How Attackers Think</h3>
+                <h3><span class="icon">🧠</span> How Attackers Think</h3>
                 <p>
-                    Attackers look for the path of least resistance. They're not usually targeting you personally—they're 
-                    looking for anyone who might give them access. They exploit urgency, authority, and helpfulness.
+                    Understanding attacker psychology helps you spot their tactics. Attackers exploit fundamental human tendencies: our desire to be helpful, our respect for authority, our fear of negative consequences, and our tendency to act quickly under pressure.
                 </p>
                 <p>
-                    A message that says "Your CEO needs this urgently" or "Your account will be suspended" is designed 
-                    to make you act before you think. Recognising these pressure tactics is your best defence.
+                    They create scenarios designed to bypass your rational thinking. "Your CEO needs this wire transfer completed before his flight" combines authority, urgency, and the desire to be helpful. "Your account will be suspended in 24 hours" triggers fear and urgency. "I'm from IT and I need your password to fix a critical issue" exploits authority and the desire to be helpful.
+                </p>
+                <p>
+                    The common thread? Pressure to act quickly without thinking. Any time you feel rushed to make a security-relevant decision, that's a red flag in itself.
                 </p>
             </div>
 
+            <div class="content-card">
+                <h3><span class="icon">📈</span> The Evolution of Threats</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Past</div>
+                        <div class="timeline-title">Obvious Scams</div>
+                        <div class="timeline-desc">Poor grammar, generic greetings, obviously fake sender addresses. Easy to spot if you were paying attention.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Present</div>
+                        <div class="timeline-title">Sophisticated Targeting</div>
+                        <div class="timeline-desc">Personalised attacks using information from LinkedIn, company websites, and social media. Grammatically correct, contextually relevant, and using legitimate-looking domains.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Emerging</div>
+                        <div class="timeline-title">AI-Enhanced Attacks</div>
+                        <div class="timeline-desc">Deepfake voice calls impersonating executives, AI-written phishing emails that adapt to your responses, and automated reconnaissance at scale.</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="highlight-box warning">
-                <div class="highlight-box-title">⚠️ Remember</div>
+                <div class="highlight-box-title">⚠️ The Attacker's Advantage</div>
                 <p>
-                    Legitimate requests rarely demand immediate action under threat. If something feels urgent 
-                    and unusual, take a moment to verify through a different channel.
+                    Attackers only need to succeed once. Defenders need to succeed every time. This asymmetry means we can't rely on being perfect—we need to assume some attacks will get through and have processes to detect and respond quickly. That's why reporting suspicious activity is so important.
                 </p>
             </div>
 
@@ -1304,32 +1896,183 @@
             </div>
         </section>
 
-        <!-- Section 3: Password Security & MFA -->
+        <!-- Section 3: Social Engineering Deep Dive -->
         <section class="section" id="section-3">
             <div class="section-header">
                 <div class="section-number">MODULE 03</div>
-                <h2 class="section-title">Password Security & MFA</h2>
+                <h2 class="section-title">Social Engineering: A Closer Look</h2>
                 <p class="section-intro">
-                    Your passwords are the keys to our organisation's digital doors. 
-                    Let's look at practical ways to keep them secure.
+                    Social engineering is the art of manipulating people into giving up confidential information or taking actions that compromise security. Let's examine real scenarios so you can recognise them.
+                </p>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-badge">Scenario 1</div>
+                <div class="scenario-content">
+                    <div class="scenario-title">📧 The Urgent Invoice</div>
+                    <div class="scenario-email">
+                        <div class="scenario-email-header">
+                            <div>From: <span>accounts@supp1ier-name.com</span> <span class="red-flag">Misspelled domain</span></div>
+                            <div>To: <span>You</span></div>
+                            <div>Subject: <span>URGENT: Invoice #38291 - Payment Overdue</span> <span class="red-flag">Urgency pressure</span></div>
+                        </div>
+                        <div class="scenario-email-body">
+                            Hi,<br><br>
+                            Our records show invoice #38291 for £12,450 is now 30 days overdue. To avoid service interruption and late fees, please process payment immediately using the new bank details below.<br><br>
+                            We've recently changed banks, so please update your records: <span class="red-flag">Changed payment details</span><br><br>
+                            Account: 12345678<br>
+                            Sort Code: 12-34-56<br><br>
+                            Please confirm once payment is made.<br><br>
+                            Regards,<br>
+                            Accounts Team
+                        </div>
+                    </div>
+                    <div class="scenario-analysis">
+                        <h5>🔍 What to Notice</h5>
+                        <ul>
+                            <li>The domain is slightly misspelled (supp1ier with a "1" instead of "l")</li>
+                            <li>Creates urgency with "URGENT" and threat of service interruption</li>
+                            <li>Requests change to payment details—a major red flag</li>
+                            <li>No specific contact person or phone number to verify</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-badge">Scenario 2</div>
+                <div class="scenario-content">
+                    <div class="scenario-title">📞 The IT Support Call</div>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">You receive an unexpected phone call:</p>
+                    <div class="scenario-email">
+                        <div class="scenario-email-body">
+                            "Hi, this is James from IT Support. We've detected some unusual activity on your account and need to verify your identity to secure it. Can you confirm your employee ID and the last four digits of your password? I'll also need you to install a remote support tool so I can check your system hasn't been compromised." <span class="red-flag">Requesting credentials + remote access</span>
+                        </div>
+                    </div>
+                    <div class="scenario-analysis">
+                        <h5>🔍 What to Notice</h5>
+                        <ul>
+                            <li>Unexpected contact—you didn't initiate this</li>
+                            <li>Requests password information (IT should never need this)</li>
+                            <li>Wants to install remote access software</li>
+                            <li>Creates urgency with "unusual activity" and "compromised"</li>
+                            <li>You cannot verify caller identity over the phone</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario-card">
+                <div class="scenario-badge">Scenario 3</div>
+                <div class="scenario-content">
+                    <div class="scenario-title">💬 The CEO Request</div>
+                    <div class="scenario-email">
+                        <div class="scenario-email-header">
+                            <div>From: <span>CEO Name &lt;ceo.name@gmail.com&gt;</span> <span class="red-flag">Personal email</span></div>
+                            <div>To: <span>You</span></div>
+                            <div>Subject: <span>Quick favour - confidential</span></div>
+                        </div>
+                        <div class="scenario-email-body">
+                            Hi,<br><br>
+                            I'm in back-to-back meetings but need you to handle something urgently and confidentially. <span class="red-flag">Urgency + secrecy</span><br><br>
+                            Can you purchase 5x £100 Amazon gift cards for a client appreciation surprise? I'll reimburse you. Please send me the codes directly once you have them—need them before 3pm.<br><br>
+                            Please don't mention this to anyone as it's meant to be a surprise. <span class="red-flag">Requests secrecy</span><br><br>
+                            Thanks,<br>
+                            [CEO Name]<br><br>
+                            Sent from my iPhone
+                        </div>
+                    </div>
+                    <div class="scenario-analysis">
+                        <h5>🔍 What to Notice</h5>
+                        <ul>
+                            <li>Sent from personal email, not company email</li>
+                            <li>Asks you to keep it secret (prevents verification)</li>
+                            <li>Gift cards are untraceable—a common scam request</li>
+                            <li>Creates time pressure ("before 3pm")</li>
+                            <li>Exploits desire to help senior leadership</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🛡️</span> Your Defence Strategy</h3>
+                <ul class="checklist">
+                    <li>
+                        <span class="checklist-icon">1</span>
+                        <div class="checklist-content">
+                            <h4>Pause Before Acting</h4>
+                            <p>If something creates urgency, that's your cue to slow down. Take a breath. Legitimate requests can wait five minutes for verification.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">2</span>
+                        <div class="checklist-content">
+                            <h4>Verify Through Different Channels</h4>
+                            <p>If you get an email asking for something unusual, call the person using a number you already have (not one in the email). If you get a call, hang up and call back using the official company directory.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">3</span>
+                        <div class="checklist-content">
+                            <h4>Question Requests for Secrecy</h4>
+                            <p>Legitimate business rarely requires you to hide your actions from colleagues. Requests for secrecy are designed to prevent you from getting a second opinion.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">4</span>
+                        <div class="checklist-content">
+                            <h4>Never Share Passwords or Codes</h4>
+                            <p>IT will never ask for your password. Period. Neither will Microsoft, Google, your bank, or anyone else legitimate. MFA codes are for you alone.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">5</span>
+                        <div class="checklist-content">
+                            <h4>Report Attempts Even If You Didn't Fall For Them</h4>
+                            <p>Your report helps protect colleagues who might receive the same attack. Security teams use this intelligence to improve defences.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="highlight-box info">
+                <div class="highlight-box-title">💡 It's Not About Being Paranoid</div>
+                <p>
+                    You don't need to suspect everyone of being an attacker. You just need to verify unusual requests through trusted channels. Think of it like checking your mirrors before changing lanes—a small habit that prevents accidents.
+                </p>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary btn-nav" onclick="prevSection()">← Back</button>
+                <button class="btn btn-primary btn-nav" onclick="nextSection()">Continue →</button>
+            </div>
+        </section>
+
+        <!-- Section 4: Password Security -->
+        <section class="section" id="section-4">
+            <div class="section-header">
+                <div class="section-number">MODULE 04</div>
+                <h2 class="section-title">Password Security</h2>
+                <p class="section-intro">
+                    Let's be honest: we all have too many passwords. The temptation to reuse them is real. 
+                    But password reuse is one of the biggest security risks you face. Here's how to manage passwords practically.
                 </p>
             </div>
 
             <div class="content-card">
-                <h3><span class="icon">🔑</span> The Password Problem</h3>
+                <h3><span class="icon">💥</span> The Password Reuse Problem</h3>
                 <p>
-                    Here's the reality: we all have too many passwords to remember. The temptation to reuse passwords 
-                    is understandable, but it's one of the biggest security risks you face.
+                    Here's a scenario: You use the same email and password for a shopping site, a forum, and your work account. The shopping site gets breached—you might not even hear about it. Attackers now have your email and password, and they automatically try it everywhere: banking sites, email providers, corporate systems.
                 </p>
                 <p>
-                    When a service gets breached (and they do, regularly), attackers try those stolen credentials 
-                    everywhere. If you used the same password for a shopping site and your work email, 
-                    that shopping breach just became a work problem.
+                    This isn't theoretical. Billions of credentials have been leaked in breaches over the years. Attackers buy and sell these credentials, and automated tools test them across thousands of sites in minutes. If you've reused a password, you're playing the odds that none of your accounts have been in a breach. Those odds aren't good.
                 </p>
             </div>
 
             <div class="password-demo">
-                <h4 style="margin-bottom: 1rem;">Try It: Password Strength Checker</h4>
+                <h4 style="margin-bottom: 1rem;">🔬 Try It: Password Strength Checker</h4>
+                <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem;">Type a test password to see how quickly it could be cracked. (Don't use your real password!)</p>
                 <div class="password-input-wrapper">
                     <input type="text" class="password-input" id="passwordInput" placeholder="Type a test password..." oninput="checkPassword(this.value)">
                 </div>
@@ -1347,37 +2090,107 @@
             </div>
 
             <div class="content-card">
-                <h3><span class="icon">💼</span> Practical Solutions</h3>
-                <ul class="checklist">
-                    <li>
-                        <span class="checklist-icon">1</span>
-                        <div class="checklist-content">
-                            <h4>Use a Password Manager</h4>
-                            <p>Let software remember your passwords for you. You only need to remember one strong master password. The manager generates unique, complex passwords for each account.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="checklist-icon">2</span>
-                        <div class="checklist-content">
-                            <h4>Never Reuse Passwords</h4>
-                            <p>Every account should have its own unique password. With a password manager, this is effortless—you don't need to remember them.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="checklist-icon">3</span>
-                        <div class="checklist-content">
-                            <h4>Use Passphrases</h4>
-                            <p>For passwords you must remember, use a phrase: "correct-horse-battery-staple" is far stronger and easier to remember than "P@ssw0rd123".</p>
-                        </div>
-                    </li>
-                </ul>
+                <h3><span class="icon">📊</span> Good Passwords vs. Bad Passwords</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Password</th>
+                            <th>Time to Crack</th>
+                            <th>Problem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="table-bad">password123</td>
+                            <td class="table-bad">Instant</td>
+                            <td>In every password dictionary</td>
+                        </tr>
+                        <tr>
+                            <td class="table-bad">Company2024!</td>
+                            <td class="table-bad">Minutes</td>
+                            <td>Predictable pattern (company + year + symbol)</td>
+                        </tr>
+                        <tr>
+                            <td class="table-bad">J@ne$m1th</td>
+                            <td class="table-bad">Hours</td>
+                            <td>Simple substitutions (@ for a, 1 for i)</td>
+                        </tr>
+                        <tr>
+                            <td>Tr0ub4dor&3</td>
+                            <td>Days</td>
+                            <td>Short, relies on complexity over length</td>
+                        </tr>
+                        <tr>
+                            <td class="table-good">correct-horse-battery-staple</td>
+                            <td class="table-good">Centuries</td>
+                            <td>Long passphrase, easy to remember</td>
+                        </tr>
+                        <tr>
+                            <td class="table-good">7Kx$mP2@nQ9vL&amp;wR</td>
+                            <td class="table-good">Centuries+</td>
+                            <td>Random (use with password manager)</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="content-card">
-                <h3><span class="icon">📱</span> Multi-Factor Authentication (MFA)</h3>
+                <h3><span class="icon">💼</span> The Practical Solution: Password Managers</h3>
                 <p>
-                    MFA adds a second layer of protection. Even if someone steals your password, they still can't 
-                    access your account without your second factor—usually your phone.
+                    A password manager is software that generates, stores, and fills in passwords for you. You only need to remember one strong master password—the manager handles everything else.
+                </p>
+                <p>
+                    With a password manager, every account gets a unique, randomly generated password like "7Kx$mP2@nQ9vL&wR". You don't need to remember it because the manager does. When you visit a site, the manager fills in the password automatically.
+                </p>
+                <p>
+                    This solves the reuse problem completely. If one site is breached, your other accounts remain secure because they all have different passwords.
+                </p>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-box-title">💡 Password Manager Benefits</div>
+                <p>
+                    <strong>Unique passwords everywhere:</strong> One breach doesn't compromise other accounts.<br>
+                    <strong>Stronger passwords:</strong> 20+ random characters that you don't need to remember.<br>
+                    <strong>Phishing protection:</strong> The manager won't fill passwords on fake sites.<br>
+                    <strong>Less frustration:</strong> No more "forgot password" resets.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🔑</span> For Passwords You Must Remember</h3>
+                <p>
+                    Some passwords you need to type manually—like your master password or computer login. For these, use a passphrase: a sequence of random words that's long but memorable.
+                </p>
+                <p>
+                    "correct-horse-battery-staple" (25 characters) is much stronger than "Tr0ub4dor&3" (11 characters), and far easier to remember. Length matters more than complexity. Four or five random words, maybe with numbers between them, creates an extremely strong password that you can actually remember.
+                </p>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary btn-nav" onclick="prevSection()">← Back</button>
+                <button class="btn btn-primary btn-nav" onclick="nextSection()">Continue →</button>
+            </div>
+        </section>
+
+        <!-- Section 5: Multi-Factor Authentication -->
+        <section class="section" id="section-5">
+            <div class="section-header">
+                <div class="section-number">MODULE 05</div>
+                <h2 class="section-title">Multi-Factor Authentication (MFA)</h2>
+                <p class="section-intro">
+                    Even the best passwords can be stolen through phishing, breaches, or other attacks. 
+                    MFA adds a second layer of protection that makes stolen passwords far less useful to attackers.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🔐</span> How MFA Works</h3>
+                <p>
+                    Authentication factors fall into three categories: something you know (password), something you have (phone, security key), and something you are (fingerprint, face). MFA requires at least two of these categories.
+                </p>
+                <p>
+                    Even if an attacker steals your password (something you know), they still need your phone (something you have) to log in. This dramatically reduces the value of stolen credentials.
                 </p>
             </div>
 
@@ -1401,11 +2214,87 @@
                 </div>
             </div>
 
-            <div class="highlight-box">
-                <div class="highlight-box-title">💡 Pro Tip</div>
+            <div class="content-card">
+                <h3><span class="icon">📱</span> Types of MFA</h3>
+                <p>Not all MFA is created equal. Here are the common types, from good to best:</p>
+            </div>
+
+            <div class="mfa-types-grid">
+                <div class="mfa-type-card">
+                    <div class="mfa-type-icon">📨</div>
+                    <div class="mfa-type-title">SMS Codes</div>
+                    <div class="mfa-type-desc">Code sent via text message</div>
+                    <div class="mfa-type-rating good">✓ Good - Better than nothing</div>
+                </div>
+                <div class="mfa-type-card">
+                    <div class="mfa-type-icon">📧</div>
+                    <div class="mfa-type-title">Email Codes</div>
+                    <div class="mfa-type-desc">Code sent to your email</div>
+                    <div class="mfa-type-rating good">✓ Good - Better than nothing</div>
+                </div>
+                <div class="mfa-type-card">
+                    <div class="mfa-type-icon">🔢</div>
+                    <div class="mfa-type-title">Authenticator App</div>
+                    <div class="mfa-type-desc">Time-based codes in an app</div>
+                    <div class="mfa-type-rating better">★ Better - Recommended</div>
+                </div>
+                <div class="mfa-type-card">
+                    <div class="mfa-type-icon">📲</div>
+                    <div class="mfa-type-title">Push Notification</div>
+                    <div class="mfa-type-desc">Approve login on your phone</div>
+                    <div class="mfa-type-rating better">★ Better - Convenient</div>
+                </div>
+                <div class="mfa-type-card">
+                    <div class="mfa-type-icon">🔐</div>
+                    <div class="mfa-type-title">Security Key</div>
+                    <div class="mfa-type-desc">Physical USB/NFC device</div>
+                    <div class="mfa-type-rating best">★★ Best - Phishing-proof</div>
+                </div>
+                <div class="mfa-type-card">
+                    <div class="mfa-type-icon">👆</div>
+                    <div class="mfa-type-title">Biometric</div>
+                    <div class="mfa-type-desc">Fingerprint or face</div>
+                    <div class="mfa-type-rating best">★★ Best - Convenient & secure</div>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">⚠️</span> MFA Attacks to Know About</h3>
                 <p>
-                    Enable MFA on your personal accounts too—email, banking, social media. 
-                    If attackers compromise your personal email, they can often reset your work passwords.
+                    Attackers have adapted to MFA. Understanding their techniques helps you stay protected:
+                </p>
+                <ul class="checklist">
+                    <li>
+                        <span class="checklist-icon">!</span>
+                        <div class="checklist-content">
+                            <h4>MFA Fatigue / Push Bombing</h4>
+                            <p>Attackers repeatedly trigger MFA prompts, hoping you'll approve one just to make them stop. Never approve a prompt you didn't initiate. If you're getting unexpected prompts, report it immediately.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">!</span>
+                        <div class="checklist-content">
+                            <h4>Real-Time Phishing</h4>
+                            <p>Sophisticated phishing sites can capture your MFA code as you enter it and use it immediately. Always verify you're on the legitimate site before entering credentials.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">!</span>
+                        <div class="checklist-content">
+                            <h4>SIM Swapping</h4>
+                            <p>Attackers convince your phone carrier to transfer your number to their SIM, intercepting SMS codes. This is why app-based or hardware MFA is preferred.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <div class="highlight-box-title">💡 Golden Rules for MFA</div>
+                <p>
+                    <strong>Never share MFA codes with anyone</strong>—not IT, not your bank, not anyone calling you.<br>
+                    <strong>Never approve prompts you didn't initiate</strong>—if you're not actively logging in, deny it.<br>
+                    <strong>Report unexpected MFA prompts</strong>—they mean someone has your password.<br>
+                    <strong>Enable MFA on personal accounts too</strong>—especially email, which is often used for password resets.
                 </p>
             </div>
 
@@ -1415,22 +2304,21 @@
             </div>
         </section>
 
-        <!-- Section 4: Data Protection & Sharing -->
-        <section class="section" id="section-4">
+        <!-- Section 6: Data Protection & Sharing -->
+        <section class="section" id="section-6">
             <div class="section-header">
-                <div class="section-number">MODULE 04</div>
+                <div class="section-number">MODULE 06</div>
                 <h2 class="section-title">Data Protection & Sharing</h2>
                 <p class="section-intro">
-                    Being mindful about what data we share, with whom, and how, is essential to 
-                    protecting our organisation and the people who trust us with their information.
+                    Being thoughtful about what data we share, with whom, and how, protects our organisation 
+                    and the people who trust us with their information.
                 </p>
             </div>
 
             <div class="content-card">
-                <h3><span class="icon">📊</span> Types of Sensitive Data</h3>
+                <h3><span class="icon">📊</span> Understanding Data Sensitivity</h3>
                 <p>
-                    Not all data is equal. Understanding what requires extra protection helps you 
-                    make better decisions about handling and sharing.
+                    Not all data requires the same level of protection. Understanding what's sensitive helps you make appropriate decisions about handling and sharing.
                 </p>
             </div>
 
@@ -1438,78 +2326,107 @@
                 <div class="data-category">
                     <div class="data-category-icon">👤</div>
                     <div class="data-category-title">Personal Data</div>
-                    <div class="data-category-examples">Names, addresses, contact details, IDs</div>
+                    <div class="data-category-examples">Names, addresses, phone numbers, email addresses, national insurance numbers</div>
                 </div>
                 <div class="data-category">
                     <div class="data-category-icon">💳</div>
                     <div class="data-category-title">Financial Data</div>
-                    <div class="data-category-examples">Payment info, bank details, salaries</div>
+                    <div class="data-category-examples">Payment cards, bank accounts, salaries, invoices, financial reports</div>
                 </div>
                 <div class="data-category">
                     <div class="data-category-icon">🏥</div>
                     <div class="data-category-title">Health Data</div>
-                    <div class="data-category-examples">Medical records, health conditions</div>
+                    <div class="data-category-examples">Medical records, sick leave reasons, disability information, health insurance</div>
                 </div>
                 <div class="data-category">
                     <div class="data-category-icon">🔒</div>
-                    <div class="data-category-title">Confidential Business</div>
-                    <div class="data-category-examples">Trade secrets, strategies, contracts</div>
+                    <div class="data-category-title">Business Confidential</div>
+                    <div class="data-category-examples">Trade secrets, strategies, M&A plans, pricing, unreleased products</div>
+                </div>
+                <div class="data-category">
+                    <div class="data-category-icon">⚖️</div>
+                    <div class="data-category-title">Legal & HR</div>
+                    <div class="data-category-examples">Contracts, legal cases, disciplinary records, performance reviews</div>
+                </div>
+                <div class="data-category">
+                    <div class="data-category-icon">🔑</div>
+                    <div class="data-category-title">Credentials & Access</div>
+                    <div class="data-category-examples">Passwords, API keys, access tokens, encryption keys</div>
                 </div>
             </div>
 
             <div class="content-card">
-                <h3><span class="icon">🤔</span> Before You Share, Ask Yourself</h3>
+                <h3><span class="icon">🤔</span> The Sharing Decision Framework</h3>
+                <p>Before sharing information, run through these questions:</p>
                 <ul class="checklist">
                     <li>
-                        <span class="checklist-icon">?</span>
+                        <span class="checklist-icon">1</span>
                         <div class="checklist-content">
                             <h4>Does this person need this information?</h4>
-                            <p>Share only what's necessary for the task at hand. More isn't always better.</p>
+                            <p>Share the minimum necessary. If they need sales figures, do they also need customer names? If they need a summary, do they need the raw data?</p>
                         </div>
                     </li>
                     <li>
-                        <span class="checklist-icon">?</span>
+                        <span class="checklist-icon">2</span>
                         <div class="checklist-content">
-                            <h4>Am I using a secure channel?</h4>
-                            <p>Sensitive data shouldn't go via personal email or messaging apps. Use approved company tools.</p>
+                            <h4>Am I certain who I'm sending to?</h4>
+                            <p>Double-check email addresses. Autocomplete can suggest the wrong person. For sensitive data, confirm by phone if you're unsure.</p>
                         </div>
                     </li>
                     <li>
-                        <span class="checklist-icon">?</span>
+                        <span class="checklist-icon">3</span>
                         <div class="checklist-content">
-                            <h4>Have I verified who I'm sending to?</h4>
-                            <p>Double-check email addresses. Autocomplete can send to the wrong "John Smith".</p>
+                            <h4>Am I using an appropriate channel?</h4>
+                            <p>Sensitive data shouldn't go via personal email, WhatsApp, or other unapproved channels. Use company-approved systems that have appropriate security.</p>
                         </div>
                     </li>
                     <li>
-                        <span class="checklist-icon">?</span>
+                        <span class="checklist-icon">4</span>
                         <div class="checklist-content">
-                            <h4>What happens to this data afterwards?</h4>
-                            <p>Consider whether the recipient will store, share, or delete the information.</p>
+                            <h4>What will happen to this data afterwards?</h4>
+                            <p>Will the recipient store it? Share it further? Is that appropriate? Consider asking them to delete it after use if it's particularly sensitive.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">5</span>
+                        <div class="checklist-content">
+                            <h4>If this was leaked, what would the impact be?</h4>
+                            <p>If the answer is "significant," add extra precautions: encryption, password-protected files, secure file sharing instead of email attachments.</p>
                         </div>
                     </li>
                 </ul>
             </div>
 
             <div class="content-card">
-                <h3><span class="icon">🌐</span> External Sharing Considerations</h3>
+                <h3><span class="icon">🌐</span> Sharing with External Parties</h3>
                 <p>
-                    When sharing with vendors, partners, or clients, remember they may have different 
-                    security standards. Consider whether data can be anonymised, summarised, or shared 
-                    in a more limited form that still meets the business need.
+                    Sharing with vendors, partners, or clients requires extra consideration. They may have different security standards, different regulatory requirements, and different data handling practices.
                 </p>
                 <p>
-                    If you're unsure whether sharing is appropriate, ask your manager or the IT team. 
-                    It's always better to check first than to deal with a breach later.
+                    Ask yourself: Can I anonymise or aggregate this data? Can I share a summary instead of raw data? Is there a secure portal instead of email? Has this sharing been approved, or should I check first?
+                </p>
+                <p>
+                    When in doubt, ask your manager or the IT/security team. It's much better to delay by a few hours to get guidance than to create a data protection issue.
                 </p>
             </div>
 
             <div class="highlight-box warning">
-                <div class="highlight-box-title">⚠️ Common Mistakes</div>
+                <div class="highlight-box-title">⚠️ Common Data Sharing Mistakes</div>
                 <p>
-                    Forwarding emails without checking attachments, sharing links with "anyone with the link" access, 
-                    and discussing sensitive matters in public spaces or on calls others can overhear. 
-                    Be mindful of your environment.
+                    <strong>CC vs BCC:</strong> Using CC instead of BCC exposes everyone's email addresses to each other.<br>
+                    <strong>"Reply All" with attachments:</strong> Forwarding sensitive attachments to people who don't need them.<br>
+                    <strong>Shared link settings:</strong> Using "anyone with the link" when "specific people" is more appropriate.<br>
+                    <strong>Discussing sensitive topics in public:</strong> Calls in coffee shops, screens visible on trains, conversations in lift lobbies.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🗑️</span> Data Lifecycle</h3>
+                <p>
+                    Data protection isn't just about sharing—it's about the entire lifecycle. Old data that's no longer needed is still a liability if it's breached. Follow retention policies, delete data when it's no longer required, and don't keep "just in case" copies of sensitive information on your local drive.
+                </p>
+                <p>
+                    Before disposing of devices or storage media, ensure data is properly wiped. Simply deleting files or formatting a drive isn't enough—data can often be recovered. Follow your organisation's procedures for secure disposal.
                 </p>
             </div>
 
@@ -1519,15 +2436,14 @@
             </div>
         </section>
 
-        <!-- Section 5: Reporting Incidents -->
-        <section class="section" id="section-5">
+        <!-- Section 7: Reporting Incidents -->
+        <section class="section" id="section-7">
             <div class="section-header">
-                <div class="section-number">MODULE 05</div>
+                <div class="section-number">MODULE 07</div>
                 <h2 class="section-title">Reporting Security Incidents</h2>
                 <p class="section-intro">
                     Fast reporting can be the difference between a minor incident and a major breach. 
-                    When in doubt, report it. The IT team would rather investigate a false alarm than 
-                    miss a real threat.
+                    The security team would rather investigate ten false alarms than miss one real threat.
                 </p>
             </div>
 
@@ -1542,110 +2458,238 @@
             </div>
 
             <div class="content-card">
-                <h3><span class="icon">📋</span> What Should You Report?</h3>
+                <h3><span class="icon">❓</span> What Should You Report?</h3>
                 <p>
-                    Report anything that seems suspicious or wrong. You don't need to be certain—that's 
-                    the IT team's job to investigate. Here are examples:
+                    Report anything that seems suspicious, unusual, or concerning. You don't need to be certain it's a real threat—that's the security team's job to investigate. Here are examples:
                 </p>
-                <ul class="checklist">
-                    <li>
-                        <span class="checklist-icon">!</span>
-                        <div class="checklist-content">
-                            <h4>Suspicious Emails or Messages</h4>
-                            <p>Unexpected requests for information, urgent demands, strange links or attachments</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="checklist-icon">!</span>
-                        <div class="checklist-content">
-                            <h4>Unusual System Behaviour</h4>
-                            <p>Programs you didn't open, unexpected pop-ups, slow or unresponsive systems</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="checklist-icon">!</span>
-                        <div class="checklist-content">
-                            <h4>Lost or Stolen Devices</h4>
-                            <p>Laptops, phones, USB drives, access cards—report immediately even if you might find it</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="checklist-icon">!</span>
-                        <div class="checklist-content">
-                            <h4>Accidental Disclosure</h4>
-                            <p>Sent data to the wrong person, shared something you shouldn't have, found exposed data</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="checklist-icon">!</span>
-                        <div class="checklist-content">
-                            <h4>Suspicious Behaviour</h4>
-                            <p>Someone asking unusual questions, unfamiliar people in secure areas, tailgating</p>
-                        </div>
-                    </li>
-                </ul>
+            </div>
+
+            <div class="incident-grid">
+                <div class="incident-example">
+                    <div class="incident-example-icon">📧</div>
+                    <h4>Suspicious Communications</h4>
+                    <p>Unexpected emails asking for information, strange requests from colleagues, messages with urgency or threats</p>
+                </div>
+                <div class="incident-example">
+                    <div class="incident-example-icon">💻</div>
+                    <h4>Unusual System Behaviour</h4>
+                    <p>Programs you didn't open, unexpected pop-ups, slow or unresponsive systems, files missing or changed</p>
+                </div>
+                <div class="incident-example">
+                    <div class="incident-example-icon">📱</div>
+                    <h4>Lost or Stolen Devices</h4>
+                    <p>Laptops, phones, tablets, USB drives, access cards—report immediately even if you might find it</p>
+                </div>
+                <div class="incident-example">
+                    <div class="incident-example-icon">📤</div>
+                    <h4>Accidental Disclosure</h4>
+                    <p>Sent data to wrong person, shared something inappropriately, found data exposed where it shouldn't be</p>
+                </div>
+                <div class="incident-example">
+                    <div class="incident-example-icon">🔔</div>
+                    <h4>Unexpected MFA Prompts</h4>
+                    <p>Authentication requests you didn't initiate—this means someone has your password</p>
+                </div>
+                <div class="incident-example">
+                    <div class="incident-example-icon">🚪</div>
+                    <h4>Physical Security</h4>
+                    <p>Unfamiliar people in secure areas, tailgating, unattended visitors, missing equipment</p>
+                </div>
+                <div class="incident-example">
+                    <div class="incident-example-icon">🎣</div>
+                    <h4>Clicked Something Suspicious</h4>
+                    <p>Clicked a link or opened an attachment you now suspect was malicious—report immediately</p>
+                </div>
+                <div class="incident-example">
+                    <div class="incident-example-icon">👁️</div>
+                    <h4>Something Just Feels Wrong</h4>
+                    <p>Trust your instincts. If something seems off, even if you can't articulate why, report it</p>
+                </div>
             </div>
 
             <div class="content-card">
-                <h3><span class="icon">⏱️</span> How to Report</h3>
+                <h3><span class="icon">📋</span> How to Report</h3>
                 <div class="report-flow">
                     <div class="report-step">
                         <div class="report-step-number">1</div>
                         <div class="report-step-content">
                             <h4>Stop and Contain</h4>
-                            <p>If it's a suspicious email, don't click anything else. If it's a lost device, try to remember where you last had it. Don't try to "fix" things yourself.</p>
+                            <p>If you clicked something suspicious, disconnect from the network if possible (unplug ethernet or disable WiFi). Don't try to "fix" things yourself—you might destroy evidence or make things worse. If it's a lost device, don't assume you'll find it—report now.</p>
                         </div>
                     </div>
                     <div class="report-step">
                         <div class="report-step-number">2</div>
                         <div class="report-step-content">
-                            <h4>Contact IT Security Immediately</h4>
-                            <p>Email security@yourcompany.com or call the security hotline. Include what happened, when, and any relevant details.</p>
+                            <h4>Contact Security Immediately</h4>
+                            <p>Email security@yourcompany.com or call the security hotline. Include: What happened? When did it happen? What did you do? What systems or data might be affected? Don't delay—even if it's outside business hours.</p>
                         </div>
                     </div>
                     <div class="report-step">
                         <div class="report-step-number">3</div>
                         <div class="report-step-content">
                             <h4>Preserve Evidence</h4>
-                            <p>Don't delete suspicious emails—forward them to security. Screenshot anything unusual. Keep devices powered on if possible.</p>
+                            <p>Don't delete suspicious emails—forward them to security. Screenshot anything unusual before it disappears. Keep devices powered on if possible (unless security advises otherwise). Note down what you remember while it's fresh.</p>
                         </div>
                     </div>
                     <div class="report-step">
                         <div class="report-step-number">4</div>
                         <div class="report-step-content">
-                            <h4>Follow Up</h4>
-                            <p>The IT team may have questions. Stay available and provide any additional information they need to investigate.</p>
+                            <h4>Cooperate with Investigation</h4>
+                            <p>The security team may have follow-up questions. Stay available and provide any additional information they need. Be honest about what happened—even if you made a mistake. This isn't about blame; it's about fixing the problem.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="highlight-box">
-                <div class="highlight-box-title">💡 Remember</div>
+                <div class="highlight-box-title">💡 There's No Penalty for Reporting</div>
                 <p>
-                    <strong>There's no penalty for reporting something that turns out to be fine.</strong> 
-                    The IT team appreciates your vigilance. It's far better to report ten false alarms 
-                    than to miss one real incident.
+                    <strong>You will not get in trouble for reporting something that turns out to be nothing.</strong> Security teams appreciate vigilance. Every report, even false alarms, helps them understand what's happening across the organisation. The only thing that's discouraged is staying silent when something seems wrong.
                 </p>
             </div>
 
             <div class="questions-grid">
                 <div class="question-card">
-                    <h4>Not sure if it's a threat?</h4>
-                    <p>Report it anyway. Let the experts decide. Your intuition that "something seems off" is valuable.</p>
+                    <h4>"I'm not sure if it's a real threat"</h4>
+                    <p>Report it anyway. Let the experts decide. Your gut feeling that something seems off is valuable intelligence.</p>
                 </div>
                 <div class="question-card">
-                    <h4>Worried about looking foolish?</h4>
-                    <p>Security professionals respect people who report. Ignoring concerns is what causes breaches.</p>
+                    <h4>"I don't want to look paranoid"</h4>
+                    <p>Security professionals respect people who report. In this field, healthy scepticism is a virtue.</p>
                 </div>
                 <div class="question-card">
-                    <h4>Think it's too small to matter?</h4>
-                    <p>Small incidents can be early signs of larger attacks. Your report might complete a bigger picture.</p>
+                    <h4>"It seems too small to matter"</h4>
+                    <p>Small incidents can be early signs of larger attacks. Your report might be the piece that completes a bigger puzzle.</p>
                 </div>
                 <div class="question-card">
-                    <h4>Made a mistake yourself?</h4>
-                    <p>Report it immediately. Honest reporting lets us respond faster. Mistakes happen—hiding them makes things worse.</p>
+                    <h4>"I made a mistake and I'm embarrassed"</h4>
+                    <p>Everyone makes mistakes. Reporting immediately lets us respond faster and minimise damage. Hiding mistakes makes things much worse.</p>
                 </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary btn-nav" onclick="prevSection()">← Back</button>
+                <button class="btn btn-primary btn-nav" onclick="nextSection()">Continue →</button>
+            </div>
+        </section>
+
+        <!-- Section 8: Getting Help -->
+        <section class="section" id="section-8">
+            <div class="section-header">
+                <div class="section-number">MODULE 08</div>
+                <h2 class="section-title">Getting Help & Support</h2>
+                <p class="section-intro">
+                    Security can feel overwhelming, but you're not expected to handle it alone. 
+                    Knowing when and how to ask for help is a strength, not a weakness.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🤝</span> When to Ask for Help</h3>
+                <p>
+                    The security team is here to support you, not to judge you. Reach out whenever you're unsure about something security-related. Here are some examples of when to ask:
+                </p>
+                <ul class="checklist">
+                    <li>
+                        <span class="checklist-icon">?</span>
+                        <div class="checklist-content">
+                            <h4>Unsure if a request is legitimate</h4>
+                            <p>"I received an unusual request and I'm not sure if it's genuine. Can you help me verify it?"</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">?</span>
+                        <div class="checklist-content">
+                            <h4>Need to share sensitive data</h4>
+                            <p>"I need to share customer data with a vendor. What's the secure way to do this?"</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">?</span>
+                        <div class="checklist-content">
+                            <h4>Using a new tool or service</h4>
+                            <p>"My team wants to use this new software. Is it approved? Are there security considerations?"</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">?</span>
+                        <div class="checklist-content">
+                            <h4>Travelling or working remotely</h4>
+                            <p>"I'm travelling to a conference. Any security precautions I should take?"</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">?</span>
+                        <div class="checklist-content">
+                            <h4>Something feels wrong</h4>
+                            <p>"I can't quite put my finger on it, but this situation feels off. Can we talk through it?"</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">📚</span> Security Resources</h3>
+                <p>
+                    Beyond direct support, you have access to resources that can help you stay informed and make good decisions:
+                </p>
+                <ul class="checklist">
+                    <li>
+                        <span class="checklist-icon">📖</span>
+                        <div class="checklist-content">
+                            <h4>Security Policies</h4>
+                            <p>Available on the company intranet. Covers acceptable use, data classification, incident response, and more.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">📰</span>
+                        <div class="checklist-content">
+                            <h4>Security Bulletins</h4>
+                            <p>Regular updates about current threats, new policies, and security tips. Check your email and the security portal.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">🎓</span>
+                        <div class="checklist-content">
+                            <h4>Additional Training</h4>
+                            <p>Specialised courses available for specific roles or topics. Ask your manager or security team about what's relevant for you.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="checklist-icon">💬</span>
+                        <div class="checklist-content">
+                            <h4>Security Champions</h4>
+                            <p>Many departments have designated security champions—colleagues who can answer basic questions and escalate as needed.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="highlight-box info">
+                <div class="highlight-box-title">💡 Building Good Security Habits</div>
+                <p>
+                    Security isn't about perfection—it's about consistent good habits. Lock your screen when you step away. Verify unusual requests. Use your password manager. Keep software updated. Report suspicious activity. These small actions, done consistently, create strong security.
+                </p>
+            </div>
+
+            <div class="content-card">
+                <h3><span class="icon">🎯</span> Remember: Security Enables, Not Restricts</h3>
+                <p>
+                    Security practices might sometimes feel like obstacles, but they exist to enable us to work safely and confidently. Good security means we can share information with partners without fear of breaches. It means customers trust us with their data. It means we can innovate without creating vulnerabilities.
+                </p>
+                <p>
+                    When you follow security practices, you're not just protecting the organisation—you're protecting yourself, your colleagues, and everyone who trusts us. That's something to be proud of.
+                </p>
+            </div>
+
+            <div class="emergency-card" style="background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%); border-color: rgba(0, 212, 170, 0.3);">
+                <h3 style="color: var(--accent-primary);">📞 Your Security Contacts</h3>
+                <div class="contact-info">
+                    <strong>Security Team:</strong> security@yourcompany.com<br>
+                    <strong>IT Help Desk:</strong> helpdesk@yourcompany.com<br>
+                    <strong>Emergency Hotline:</strong> ext. 4444 (24/7)
+                </div>
+                <p>Don't hesitate to reach out. We're here to help.</p>
             </div>
 
             <div class="nav-buttons">
@@ -1654,8 +2698,8 @@
             </div>
         </section>
 
-        <!-- Section 6: Quiz -->
-        <section class="section" id="section-6">
+        <!-- Section 9: Quiz -->
+        <section class="section" id="section-9">
             <div class="section-header">
                 <div class="section-number">ASSESSMENT</div>
                 <h2 class="section-title">Knowledge Check</h2>
@@ -1667,12 +2711,12 @@
             <div class="quiz-container" id="quiz1">
                 <div class="quiz-question">
                     <span class="quiz-question-number">1</span>
-                    <span>Why should you never reuse passwords across different accounts?</span>
+                    <span>Why is password reuse dangerous?</span>
                 </div>
                 <div class="quiz-options">
                     <div class="quiz-option" onclick="selectOption(1, this, 'a')">
                         <span class="quiz-option-marker">A</span>
-                        <span>It's against company policy</span>
+                        <span>It makes passwords easier to remember</span>
                     </div>
                     <div class="quiz-option" onclick="selectOption(1, this, 'b')">
                         <span class="quiz-option-marker">B</span>
@@ -1680,7 +2724,11 @@
                     </div>
                     <div class="quiz-option" onclick="selectOption(1, this, 'c')">
                         <span class="quiz-option-marker">C</span>
-                        <span>It makes passwords easier to guess</span>
+                        <span>It's against company policy</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(1, this, 'd')">
+                        <span class="quiz-option-marker">D</span>
+                        <span>It slows down login processes</span>
                     </div>
                 </div>
                 <div class="quiz-feedback" id="feedback1"></div>
@@ -1689,20 +2737,24 @@
             <div class="quiz-container" id="quiz2">
                 <div class="quiz-question">
                     <span class="quiz-question-number">2</span>
-                    <span>You receive an email asking you to urgently update your login details via a link. What should you do?</span>
+                    <span>You receive an urgent email from your CEO's personal Gmail asking you to purchase gift cards. What should you do?</span>
                 </div>
                 <div class="quiz-options">
                     <div class="quiz-option" onclick="selectOption(2, this, 'a')">
                         <span class="quiz-option-marker">A</span>
-                        <span>Click the link quickly since it's urgent</span>
+                        <span>Complete the request quickly since it's from the CEO</span>
                     </div>
                     <div class="quiz-option" onclick="selectOption(2, this, 'b')">
                         <span class="quiz-option-marker">B</span>
-                        <span>Delete the email and forget about it</span>
+                        <span>Reply to the email asking for more details</span>
                     </div>
                     <div class="quiz-option" onclick="selectOption(2, this, 'c')">
                         <span class="quiz-option-marker">C</span>
-                        <span>Don't click the link, report it to IT security, and verify through official channels</span>
+                        <span>Don't action it, verify through a different channel (like calling their known number), and report to security</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(2, this, 'd')">
+                        <span class="quiz-option-marker">D</span>
+                        <span>Forward it to colleagues to get their opinion</span>
                     </div>
                 </div>
                 <div class="quiz-feedback" id="feedback2"></div>
@@ -1711,20 +2763,24 @@
             <div class="quiz-container" id="quiz3">
                 <div class="quiz-question">
                     <span class="quiz-question-number">3</span>
-                    <span>What does MFA (Multi-Factor Authentication) provide?</span>
+                    <span>What does Multi-Factor Authentication (MFA) provide?</span>
                 </div>
                 <div class="quiz-options">
                     <div class="quiz-option" onclick="selectOption(3, this, 'a')">
                         <span class="quiz-option-marker">A</span>
-                        <span>A second layer of protection requiring something you have in addition to your password</span>
+                        <span>A more complex password requirement</span>
                     </div>
                     <div class="quiz-option" onclick="selectOption(3, this, 'b')">
                         <span class="quiz-option-marker">B</span>
-                        <span>A more complex password requirement</span>
+                        <span>A second layer of protection requiring something you have in addition to something you know</span>
                     </div>
                     <div class="quiz-option" onclick="selectOption(3, this, 'c')">
                         <span class="quiz-option-marker">C</span>
                         <span>Automatic virus scanning for emails</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(3, this, 'd')">
+                        <span class="quiz-option-marker">D</span>
+                        <span>Encryption for all your files</span>
                     </div>
                 </div>
                 <div class="quiz-feedback" id="feedback3"></div>
@@ -1733,20 +2789,24 @@
             <div class="quiz-container" id="quiz4">
                 <div class="quiz-question">
                     <span class="quiz-question-number">4</span>
-                    <span>When should you report a potential security incident?</span>
+                    <span>You receive multiple unexpected MFA prompts on your phone that you didn't initiate. What does this indicate and what should you do?</span>
                 </div>
                 <div class="quiz-options">
                     <div class="quiz-option" onclick="selectOption(4, this, 'a')">
                         <span class="quiz-option-marker">A</span>
-                        <span>Only when you're 100% certain it's a real threat</span>
+                        <span>The system is glitching—approve one to make it stop</span>
                     </div>
                     <div class="quiz-option" onclick="selectOption(4, this, 'b')">
                         <span class="quiz-option-marker">B</span>
-                        <span>Immediately, even if you're not sure—let IT investigate</span>
+                        <span>Someone likely has your password and is trying to access your account—deny all prompts and report immediately</span>
                     </div>
                     <div class="quiz-option" onclick="selectOption(4, this, 'c')">
                         <span class="quiz-option-marker">C</span>
-                        <span>After trying to fix the problem yourself first</span>
+                        <span>IT is testing the system—ignore them</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(4, this, 'd')">
+                        <span class="quiz-option-marker">D</span>
+                        <span>Your phone has a virus—turn it off</span>
                     </div>
                 </div>
                 <div class="quiz-feedback" id="feedback4"></div>
@@ -1755,23 +2815,157 @@
             <div class="quiz-container" id="quiz5">
                 <div class="quiz-question">
                     <span class="quiz-question-number">5</span>
-                    <span>Before sharing sensitive data, you should ask yourself:</span>
+                    <span>When should you report a potential security incident?</span>
                 </div>
                 <div class="quiz-options">
                     <div class="quiz-option" onclick="selectOption(5, this, 'a')">
                         <span class="quiz-option-marker">A</span>
-                        <span>Is it after 5pm?</span>
+                        <span>Only when you're 100% certain it's a real threat</span>
                     </div>
                     <div class="quiz-option" onclick="selectOption(5, this, 'b')">
                         <span class="quiz-option-marker">B</span>
-                        <span>Does this person need this data, and am I using a secure channel?</span>
+                        <span>After trying to investigate and fix the problem yourself</span>
                     </div>
                     <div class="quiz-option" onclick="selectOption(5, this, 'c')">
                         <span class="quiz-option-marker">C</span>
-                        <span>Has my manager approved every single email I send?</span>
+                        <span>Immediately when something seems suspicious, even if you're not sure—let the security team investigate</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(5, this, 'd')">
+                        <span class="quiz-option-marker">D</span>
+                        <span>Only during business hours</span>
                     </div>
                 </div>
                 <div class="quiz-feedback" id="feedback5"></div>
+            </div>
+
+            <div class="quiz-container" id="quiz6">
+                <div class="quiz-question">
+                    <span class="quiz-question-number">6</span>
+                    <span>Before sharing sensitive data externally, you should ask yourself:</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(6, this, 'a')">
+                        <span class="quiz-option-marker">A</span>
+                        <span>Is it after 5pm?</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(6, this, 'b')">
+                        <span class="quiz-option-marker">B</span>
+                        <span>Does this person need this data, am I using a secure channel, and am I certain of the recipient?</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(6, this, 'c')">
+                        <span class="quiz-option-marker">C</span>
+                        <span>Has my manager approved every single email I send?</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(6, this, 'd')">
+                        <span class="quiz-option-marker">D</span>
+                        <span>Is the file small enough to attach?</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="feedback6"></div>
+            </div>
+
+            <div class="quiz-container" id="quiz7">
+                <div class="quiz-question">
+                    <span class="quiz-question-number">7</span>
+                    <span>What's the best approach to managing passwords?</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(7, this, 'a')">
+                        <span class="quiz-option-marker">A</span>
+                        <span>Use one strong password for all accounts so you don't forget it</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(7, this, 'b')">
+                        <span class="quiz-option-marker">B</span>
+                        <span>Write passwords on sticky notes and keep them in your desk drawer</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(7, this, 'c')">
+                        <span class="quiz-option-marker">C</span>
+                        <span>Use a password manager to generate and store unique passwords for each account</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(7, this, 'd')">
+                        <span class="quiz-option-marker">D</span>
+                        <span>Use simple passwords that are easy to remember</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="feedback7"></div>
+            </div>
+
+            <div class="quiz-container" id="quiz8">
+                <div class="quiz-question">
+                    <span class="quiz-question-number">8</span>
+                    <span>You accidentally sent a spreadsheet with customer data to the wrong email address. What should you do?</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(8, this, 'a')">
+                        <span class="quiz-option-marker">A</span>
+                        <span>Hope the recipient deletes it and don't tell anyone</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(8, this, 'b')">
+                        <span class="quiz-option-marker">B</span>
+                        <span>Report it to the security team immediately so they can help contain the issue</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(8, this, 'c')">
+                        <span class="quiz-option-marker">C</span>
+                        <span>Send a follow-up email asking them to delete it, then move on</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(8, this, 'd')">
+                        <span class="quiz-option-marker">D</span>
+                        <span>Wait to see if anyone notices</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="feedback8"></div>
+            </div>
+
+            <div class="quiz-container" id="quiz9">
+                <div class="quiz-question">
+                    <span class="quiz-question-number">9</span>
+                    <span>What's the primary reason social engineering attacks are so effective?</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(9, this, 'a')">
+                        <span class="quiz-option-marker">A</span>
+                        <span>They use advanced technology that's impossible to detect</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(9, this, 'b')">
+                        <span class="quiz-option-marker">B</span>
+                        <span>They exploit human psychology—our helpfulness, respect for authority, and tendency to act quickly under pressure</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(9, this, 'c')">
+                        <span class="quiz-option-marker">C</span>
+                        <span>People don't have antivirus software</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(9, this, 'd')">
+                        <span class="quiz-option-marker">D</span>
+                        <span>Email systems are fundamentally insecure</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="feedback9"></div>
+            </div>
+
+            <div class="quiz-container" id="quiz10">
+                <div class="quiz-question">
+                    <span class="quiz-question-number">10</span>
+                    <span>If you're unsure whether something is a security concern, you should:</span>
+                </div>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(10, this, 'a')">
+                        <span class="quiz-option-marker">A</span>
+                        <span>Ignore it—if it were serious, IT would contact you</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(10, this, 'b')">
+                        <span class="quiz-option-marker">B</span>
+                        <span>Ask a colleague what they think before bothering security</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(10, this, 'c')">
+                        <span class="quiz-option-marker">C</span>
+                        <span>Research it online to determine if it's a known threat</span>
+                    </div>
+                    <div class="quiz-option" onclick="selectOption(10, this, 'd')">
+                        <span class="quiz-option-marker">D</span>
+                        <span>Ask the security team—they'd rather help you verify than miss a real threat</span>
+                    </div>
+                </div>
+                <div class="quiz-feedback" id="feedback10"></div>
             </div>
 
             <div class="nav-buttons">
@@ -1780,8 +2974,8 @@
             </div>
         </section>
 
-        <!-- Section 7: Completion -->
-        <section class="section" id="section-7">
+        <!-- Section 10: Completion -->
+        <section class="section" id="section-10">
             <div class="completion-screen">
                 <div class="completion-icon">🎉</div>
                 <h2 class="completion-title">Training Complete!</h2>
@@ -1791,15 +2985,15 @@
 
                 <div class="completion-stats">
                     <div class="completion-stat">
-                        <div class="completion-stat-value" id="finalScore">0/5</div>
+                        <div class="completion-stat-value" id="finalScore">0/10</div>
                         <div class="completion-stat-label">Quiz Score</div>
                     </div>
                     <div class="completion-stat">
-                        <div class="completion-stat-value" id="finalTime">25:00</div>
+                        <div class="completion-stat-value" id="finalTime">00:00</div>
                         <div class="completion-stat-label">Time Taken</div>
                     </div>
                     <div class="completion-stat">
-                        <div class="completion-stat-value">5/5</div>
+                        <div class="completion-stat-value">8/8</div>
                         <div class="completion-stat-label">Modules Completed</div>
                     </div>
                 </div>
@@ -1817,46 +3011,48 @@
 
                 <div class="content-card" style="text-align: left; margin-top: 2rem;">
                     <h3><span class="icon">📌</span> Key Takeaways</h3>
-                    <ul class="checklist">
-                        <li>
-                            <span class="checklist-icon">✓</span>
-                            <div class="checklist-content">
-                                <h4>Use unique passwords with a password manager</h4>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="checklist-icon">✓</span>
-                            <div class="checklist-content">
-                                <h4>Enable MFA on all accounts</h4>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="checklist-icon">✓</span>
-                            <div class="checklist-content">
-                                <h4>Think before sharing sensitive data</h4>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="checklist-icon">✓</span>
-                            <div class="checklist-content">
-                                <h4>Report incidents immediately—when in doubt, report</h4>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="checklist-icon">✓</span>
-                            <div class="checklist-content">
-                                <h4>Ask for help if you're unsure about anything</h4>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="takeaways-grid">
+                        <div class="takeaway-card">
+                            <div class="takeaway-icon">🔐</div>
+                            <div class="takeaway-text">Use unique passwords with a password manager</div>
+                        </div>
+                        <div class="takeaway-card">
+                            <div class="takeaway-icon">📱</div>
+                            <div class="takeaway-text">Enable MFA on all accounts—never share codes</div>
+                        </div>
+                        <div class="takeaway-card">
+                            <div class="takeaway-icon">⏸️</div>
+                            <div class="takeaway-text">Pause and verify unusual requests</div>
+                        </div>
+                        <div class="takeaway-card">
+                            <div class="takeaway-icon">🤔</div>
+                            <div class="takeaway-text">Think before sharing sensitive data</div>
+                        </div>
+                        <div class="takeaway-card">
+                            <div class="takeaway-icon">🚨</div>
+                            <div class="takeaway-text">Report incidents immediately—no penalties</div>
+                        </div>
+                        <div class="takeaway-card">
+                            <div class="takeaway-icon">🤝</div>
+                            <div class="takeaway-text">Ask for help whenever you're unsure</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="emergency-card" style="margin-top: 2rem;">
-                    <h3>🔒 Security Contact</h3>
-                    <p>Remember: If you ever need help or want to report something:</p>
+                    <h3>🔒 Security Contact Information</h3>
+                    <p>Save these contacts—you'll need them someday:</p>
                     <div class="contact-info">
-                        📧 security@yourcompany.com
+                        📧 security@yourcompany.com<br>
+                        📞 Emergency Hotline: ext. 4444 (24/7)
                     </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 2rem; text-align: left;">
+                    <div class="highlight-box-title">🎯 What's Next?</div>
+                    <p>
+                        Security awareness isn't a one-time event—it's an ongoing practice. Stay alert for security bulletins, participate in any follow-up training, and most importantly, apply what you've learned every day. If you have questions or concerns at any time, the security team is always here to help.
+                    </p>
                 </div>
 
                 <button class="btn btn-primary" onclick="restartCourse()" style="margin-top: 2rem;">
@@ -1870,16 +3066,21 @@
     <script>
         // Course state
         let currentSection = 0;
-        const totalSections = 8;
+        const totalSections = 11;
         let timerInterval;
         let elapsedSeconds = 0;
         let quizAnswers = {};
         const correctAnswers = {
             1: 'b',
             2: 'c',
-            3: 'a',
+            3: 'b',
             4: 'b',
-            5: 'b'
+            5: 'c',
+            6: 'b',
+            7: 'c',
+            8: 'b',
+            9: 'b',
+            10: 'd'
         };
 
         // Initialize
@@ -1964,14 +3165,21 @@
             if (password.length >= 8) strength++;
             if (password.length >= 12) strength++;
             if (password.length >= 16) strength++;
+            if (password.length >= 20) strength++;
 
             // Complexity checks
             if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
             if (/\d/.test(password)) strength++;
             if (/[^a-zA-Z0-9]/.test(password)) strength++;
 
+            // Common patterns penalty
+            const commonPatterns = ['password', '123456', 'qwerty', 'admin', 'letmein', 'welcome'];
+            if (commonPatterns.some(p => password.toLowerCase().includes(p))) {
+                strength = Math.max(0, strength - 3);
+            }
+
             // Normalize to 4 bars
-            const level = Math.min(4, Math.ceil(strength / 1.5));
+            const level = Math.min(4, Math.ceil(strength / 1.75));
 
             let strengthClass = 'weak';
             let strengthLabel = 'Weak';
@@ -1979,7 +3187,7 @@
             if (level <= 1) {
                 strengthClass = 'weak';
                 strengthLabel = 'Very Weak';
-                time = 'Seconds';
+                time = 'Instant to Seconds';
             } else if (level === 2) {
                 strengthClass = 'weak';
                 strengthLabel = 'Weak';
@@ -2016,8 +3224,10 @@
         }
 
         function submitQuiz() {
+            const totalQuestions = 10;
+            
             // Check if all questions answered
-            if (Object.keys(quizAnswers).length < 5) {
+            if (Object.keys(quizAnswers).length < totalQuestions) {
                 alert('Please answer all questions before submitting.');
                 return;
             }
@@ -2025,7 +3235,7 @@
             let score = 0;
 
             // Grade each question
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= totalQuestions; i++) {
                 const container = document.getElementById(`quiz${i}`);
                 const feedback = document.getElementById(`feedback${i}`);
                 const options = container.querySelectorAll('.quiz-option');
@@ -2054,10 +3264,10 @@
 
             // Update submit button
             const submitBtn = document.getElementById('submitQuizBtn');
-            submitBtn.textContent = `Score: ${score}/5 — Continue →`;
+            submitBtn.textContent = `Score: ${score}/${totalQuestions} — Continue →`;
             submitBtn.onclick = () => {
                 // Set final score
-                document.getElementById('finalScore').textContent = `${score}/5`;
+                document.getElementById('finalScore').textContent = `${score}/${totalQuestions}`;
                 document.getElementById('finalTime').textContent = stopTimer();
                 document.getElementById('completionDate').textContent = new Date().toLocaleDateString('en-GB', {
                     day: 'numeric',
@@ -2069,6 +3279,8 @@
         }
 
         function restartCourse() {
+            const totalQuestions = 10;
+            
             // Reset state
             currentSection = 0;
             elapsedSeconds = 0;
@@ -2082,7 +3294,7 @@
             document.getElementById('timerDisplay').textContent = '25:00';
             
             // Reset quiz
-            for (let i = 1; i <= 5; i++) {
+            for (let i = 1; i <= totalQuestions; i++) {
                 const container = document.getElementById(`quiz${i}`);
                 const feedback = document.getElementById(`feedback${i}`);
                 const options = container.querySelectorAll('.quiz-option');
